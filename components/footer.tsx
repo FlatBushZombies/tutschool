@@ -17,7 +17,7 @@ export default function Footer() {
       phone: "+7 (983) 662-97-30",
       email: "info@tutschool.ru",
       address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",
-      rating: "4.8 на Яндексе",
+      rating: "4.9 на Яндексе",
       description:
         "Школа иностранных языков для детей и взрослых. Мы помогаем нашим студентам достигать своих целей в изучении языков и творческом развитии.",
       footer: {
@@ -49,7 +49,7 @@ export default function Footer() {
       phone: "+7 (983) 662-97-30",
       email: "info@tutschool.ru",
       address: "Moscow region, Khimki, Novogorsk district, Zarechnaya street, 5, building 2",
-      rating: "4.8 on Yandex",
+      rating: "4.9 on Yandex",
       description:
         "School of foreign languages for children and adults. We help our students achieve their goals in language learning and creative development.",
       footer: {

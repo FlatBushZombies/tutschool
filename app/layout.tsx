@@ -2,6 +2,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
+import { Suspense } from "react";
+import YandexMetrika from "@/components/YandexMetrika";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -152,6 +154,10 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
+                <Suspense fallback={null}>
+          {children}
+          <YandexMetrika counterId="103804746" />
+        </Suspense>
       </body>
     </html>
   );

@@ -120,7 +120,7 @@ export default function TeenagersPage() {
         plans: [
           {
             name: "Мини-группы",
-            price: "от 1400 ₽/занятия",
+            price: "от 1400 ₽/ занятие",
             features: ["", ""],
           },
           {
@@ -246,29 +246,6 @@ export default function TeenagersPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Head>
-                <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){
-                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                m[i].l=1*new Date();
-                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-              
-              ym(103804746, 'init', {
-                ssr:true,
-                webvisor:true,
-                clickmap:true,
-                ecommerce:"dataLayer",
-                accurateTrackBounce:true,
-                trackLinks:true
-              });
-            `
-          }}
-        />
-      </Head>
         <div className="bg-gray-100 py-2 text-sm">
                 <div className="container mx-auto flex flex-wrap items-center justify-between px-4">
                   <div className="flex flex-wrap items-center gap-4">
@@ -832,33 +809,40 @@ export default function TeenagersPage() {
               </div>
             </section>
 
-        {/* Pricing Section - Stable */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">{t.pricing.title}</h2>
-            <div 
-  className="grid grid-cols-1 md:grid-cols-3 gap-8 
-  max-w-5xl ml-[20%] mr-auto"
->
-  {t.pricing.plans.map((plan, index) => (
+  {/* Pricing Section - Stable */}
+<section className="py-20 bg-gray-50">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
+      {t.pricing.title}
+    </h2>
+
     <div
-      key={index} // Don't forget the key!
-      className={`relative bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-[#5C162E] ${
-        plan.popular ? 'border-2 border-[#5C162E]' : ''
-      }`}
+      className="
+        grid grid-cols-1 md:grid-cols-3 gap-8
+        max-w-5xl mx-auto md:ml-[20%] md:mr-auto
+      "
     >
-      {plan.popular && (
-        <div className="absolute top-0 right-0 bg-[#5C162E] text-white px-4 py-1 rounded-bl-lg">
-          {language === 'ru' ? 'Популярный' : 'Popular'}
+      {t.pricing.plans.map((plan, index) => (
+        <div
+          key={index}
+          className={`
+            relative bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-[#5C162E]
+            ${plan.popular ? 'border-2 border-[#5C162E]' : ''}
+          `}
+        >
+          {plan.popular && (
+            <div className="absolute top-0 right-0 bg-[#5C162E] text-white px-4 py-1 rounded-bl-lg">
+              {language === 'ru' ? 'Популярный' : 'Popular'}
+            </div>
+          )}
+          <h3 className="text-xl font-bold mb-4 text-[#5C162E]">{plan.name}</h3>
+          <p className="text-2xl font-bold mb-6">{plan.price}</p>
         </div>
-      )}
-      <h3 className="text-xl font-bold mb-4 text-[#5C162E]">{plan.name}</h3>
-      <p className="text-2xl font-bold mb-6">{plan.price}</p>
+      ))}
     </div>
-  ))}
-</div>
-          </div>
-        </section>
+  </div>
+</section>
+
 
         {/* CTA Section - Stable */}
         <section className="py-20 bg-[#5C162E] text-white">
@@ -871,15 +855,6 @@ export default function TeenagersPage() {
             </a>
           </div>
         </section>
-             <noscript>
-        <div>
-          <img 
-            src="https://mc.yandex.ru/watch/103804746" 
-            style={{position: "absolute", left: "-9999px"}} 
-            alt="" 
-          />
-        </div>
-      </noscript>
     </div>
   )
 }

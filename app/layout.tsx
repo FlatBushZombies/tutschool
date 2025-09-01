@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
 import { Suspense } from "react";
+import Script from "next/script";
 import YandexMetrika from "@/components/YandexMetrika";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -93,7 +94,8 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <script
+        <>
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -149,13 +151,22 @@ export default function RootLayout({
             }),
           }}
         />
+        <noscript>
+            <div>
+              <img
+                  src={`https://mc.yandex.ru/watch/103804746`}
+                  style={{ position: "absolute", left: "-9999px" }}
+                  alt=""
+                />
+              </div>
+        </noscript>
+        </>
       </head>
       <body className={inter.className}>
         {children}
         <Footer />
         <Toaster />
                 <Suspense fallback={null}>
-          {children}
           <YandexMetrika counterId="103804746" />
         </Suspense>
       </body>

@@ -221,7 +221,7 @@ export default function AdultsPage() {
         items: [
           {
             type: "Мини-группы",
-            price: "от 1400 ₽/занятия"
+            price: "от 1400 ₽/ занятие"
           },
           {
             type: "Индивидуальные занятия",
@@ -419,29 +419,6 @@ export default function AdultsPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Head>
-                <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){
-                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                m[i].l=1*new Date();
-                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-              
-              ym(103804746, 'init', {
-                ssr:true,
-                webvisor:true,
-                clickmap:true,
-                ecommerce:"dataLayer",
-                accurateTrackBounce:true,
-                trackLinks:true
-              });
-            `
-          }}
-        />
-      </Head>
       {/* Top Bar */}
             <ScrollProgress />
       
@@ -1061,37 +1038,41 @@ export default function AdultsPage() {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-              variants={fadeIn}
-              className="mb-12 text-center text-3xl font-bold"
-            >
-              {t.pricing.title}
-            </motion.h2>
-           <motion.div
-  initial="hidden"
-  animate={isLoaded ? "visible" : "hidden"}
-  variants={staggerContainer}
-
-  className="grid gap-8 md:grid-cols-3 ml-[20%] w-[90%]"
->
-  {t.pricing.items.map((item, index) => (
-    <motion.div
-      key={index}
+{/* Pricing */}
+<section className="bg-gray-50 py-16">
+  <div className="container mx-auto px-4">
+    <motion.h2
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
       variants={fadeIn}
-      className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-[#5C162E]"
+      className="mb-12 text-center text-3xl font-bold"
     >
-      <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
-      <p className="text-3xl font-bold text-primary">{item.price}</p>
+      {t.pricing.title}
+    </motion.h2>
+
+    <motion.div
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
+      variants={staggerContainer}
+      className="
+        grid gap-8 md:grid-cols-3
+        w-[90%] mx-auto md:ml-[20%] md:mr-auto
+      "
+    >
+      {t.pricing.items.map((item, index) => (
+        <motion.div
+          key={index}
+          variants={fadeIn}
+          className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-[#5C162E]"
+        >
+          <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
+          <p className="text-3xl font-bold text-primary">{item.price}</p>
+        </motion.div>
+      ))}
     </motion.div>
-  ))}
-</motion.div>
-          </div>
-        </section>
+  </div>
+</section>
+
 
         {/* CTA Section */}
         <section className="bg-primary py-16 text-white">
@@ -1113,15 +1094,6 @@ export default function AdultsPage() {
           </div>
         </section>
       </main>
-           <noscript>
-        <div>
-          <img 
-            src="https://mc.yandex.ru/watch/103804746" 
-            style={{position: "absolute", left: "-9999px"}} 
-            alt="" 
-          />
-        </div>
-      </noscript>
     </div>
   )
 }

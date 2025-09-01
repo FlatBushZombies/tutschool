@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function ThankYouPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="bg-white">
       {/* Hero Section */}
       <section className="relative bg-burgundy-900 py-20 text-white">
         <div className="container mx-auto px-4">

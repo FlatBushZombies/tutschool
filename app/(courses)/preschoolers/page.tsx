@@ -152,7 +152,7 @@ export default function PreschoolersPage() {
         items: [
           {
             type: "Мини-группы",
-            price: "от 1400 ₽/занятия"
+            price: "от 1400 ₽/  занятие"
           },
           {
             type: "Индивидуальные занятия",
@@ -339,29 +339,6 @@ export default function PreschoolersPage() {
 
   return   (
           <div className="flex min-h-screen flex-col">
-            <Head>
-                      <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){
-                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                m[i].l=1*new Date();
-                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-              
-              ym(103804746, 'init', {
-                ssr:true,
-                webvisor:true,
-                clickmap:true,
-                ecommerce:"dataLayer",
-                accurateTrackBounce:true,
-                trackLinks:true
-              });
-            `
-          }}
-        />
-            </Head>
 <div className="bg-gray-100 py-2 text-sm">
   <div className="container mx-auto flex flex-wrap items-center justify-between px-4">
     <div className="flex flex-wrap items-center gap-4">
@@ -858,36 +835,39 @@ export default function PreschoolersPage() {
       </div>
     </section>
 
-    {/* Schedule Section */}
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <FadeIn>
-          <h2 className="mb-12 text-center text-3xl font-bold text-primary">
-           {t.services.schedule}
-          </h2>
+   {/* Schedule Section */}
+<section className="py-16">
+  <div className="container mx-auto px-4">
+    <FadeIn>
+      <h2 className="mb-12 text-center text-3xl font-bold text-primary">
+        {t.services.schedule}
+      </h2>
+    </FadeIn>
+
+    {/* Cards container */}
+    <div className="flex flex-wrap justify-center gap-6">
+      {t.schedule.map((item, index) => (
+        <FadeIn key={index} delay={index * 100}>
+          <div className="w-full max-w-sm rounded-lg bg-white p-6 shadow-lg">
+            <div className="mb-2 flex items-center gap-2">
+              <Calendar className="h-5 w-5 text-primary" />
+              <h3 className="text-lg font-semibold">{item.day}</h3>
+            </div>
+            <div className="ml-7 space-y-2">
+              {item.times.map((time, timeIndex) => (
+                <div key={timeIndex} className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-gray-400" />
+                  <span className="text-gray-600">{time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </FadeIn>
-        <div className="mx-auto max-w-2xl rounded-lg bg-white p-8 shadow-lg">
-          {t.schedule.map((item, index) => (
-            <FadeIn key={index} delay={index * 100}>
-              <div className="mb-6 last:mb-0">
-                <div className="mb-2 flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold">{item.day}</h3>
-                </div>
-                <div className="ml-7 space-y-2">
-                  {item.times.map((time, timeIndex) => (
-                    <div key={timeIndex} className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-gray-400" />
-                      <span className="text-gray-600">{time}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 {/* Pricing */}
 <section className="bg-gray-50 py-16 flex justify-center items-center">
@@ -944,15 +924,6 @@ export default function PreschoolersPage() {
       </div>
     </section>
   </main>
- <noscript>
-        <div>
-          <img 
-            src="https://mc.yandex.ru/watch/103804746" 
-            style={{position: "absolute", left: "-9999px"}} 
-            alt="" 
-          />
-        </div>
-      </noscript>
 </div>
 );
 }

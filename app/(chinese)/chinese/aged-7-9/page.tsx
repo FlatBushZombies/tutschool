@@ -767,7 +767,6 @@ export default function ChineseAged79Page() {
               {t.pricing.title}
             </h2>
            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 
-  /* ↓↓↓ Modified container classes for right shift ↓↓↓ */
   max-w-5xl ml-[20%] mr-auto">
   {t.pricing.plans.map((plan, index) => (
     <motion.div

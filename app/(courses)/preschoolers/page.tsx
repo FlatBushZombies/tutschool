@@ -876,32 +876,31 @@ export default function PreschoolersPage() {
       initial="hidden"
       animate={isLoaded ? "visible" : "hidden"}
       variants={fadeIn}
-      className="mb-12 text-center text-4xl font-extrabold text-gray-800 justify-center"
+      className="mb-12 text-center text-4xl font-extrabold text-gray-800"
     >
       {t.pricing.title}
     </motion.h2>
 
     <motion.div
-  initial="hidden"
-  animate={isLoaded ? "visible" : "hidden"}
-  variants={staggerContainer}
-  className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 justify-center text-center"
-  // ↓↓↓ Added margin-left (ml-*) to shift right ↓↓↓
-  style={{ marginLeft: '20%' }}
->
-  {t.pricing.items.map((item, index) => (
-    <motion.div
-      key={index}
-      variants={fadeIn}
-      className="rounded-xl bg-white p-8 text-center shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 border-2 border-[#5C162E] justify-center"
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
+      variants={staggerContainer}
+      className="grid gap-10 justify-center sm:grid-cols-2 md:grid-cols-3"
     >
-      <h3 className="mb-3 text-2xl font-semibold text-gray-900">{item.type}</h3>
-      <p className="text-4xl font-bold text-primary mb-4">{item.price}</p>
+      {t.pricing.items.map((item, index) => (
+        <motion.div
+          key={index}
+          variants={fadeIn}
+          className="rounded-xl bg-white p-8 text-center shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 border-2 border-[#5C162E] w-full max-w-xs"
+        >
+          <h3 className="mb-3 text-2xl font-semibold text-gray-900">{item.type}</h3>
+          <p className="text-4xl font-bold text-primary mb-4">{item.price}</p>
+        </motion.div>
+      ))}
     </motion.div>
-  ))}
-</motion.div>
   </div>
 </section>
+
 
 
     {/* CTA Section */}

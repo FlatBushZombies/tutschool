@@ -831,8 +831,8 @@ export default function TeenagersPage() {
           `}
         >
           {plan.popular && (
-            <div className="absolute top-0 right-0 bg-[#5C162E] text-white px-4 py-1 rounded-bl-lg">
-              {language === 'ru' ? 'Популярный' : 'Popular'}
+            <div className="absolute top-0 right-0  text-white px-4 py-1 rounded-bl-lg">
+              {language === 'ru' ? '' : ''}
             </div>
           )}
           <h3 className="text-xl font-bold mb-4 text-[#5C162E]">{plan.name}</h3>

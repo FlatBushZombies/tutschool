@@ -65,10 +65,10 @@ export default function HomePage() {
   }, [])
 
   const heroImages = [
-    "/assets/slider/Slider-image-1.jpg",
-    "/assets/slider/Slider-Image-2.jpg",
-    "/assets/slider/Slider-image-3.jpg",
-    "/assets/slider/Slider-image-4.jpg",
+    "/assets/slider/Slider-image-1.webp",
+    "/assets/slider/Slider-Image-2.webp",
+    "/assets/slider/Slider-image-3.webp",
+    "/assets/slider/Slider-image-4.webp",
   ]
 
   useEffect(() => {
@@ -938,89 +938,105 @@ export default function HomePage() {
 
       <main>
         {/* Hero Section */}
-        <section id="hero" className="relative">
-          <div className="relative h-[600px] sm:h-[600px] w-full overflow-hidden">
-            {heroImages.map((src, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-all duration-1000 ${
-                  index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-                } ${
-                  sliderDirection === "next" && index === currentImageIndex
-                    ? "animate-slide-in-right"
-                    : sliderDirection === "prev" && index === currentImageIndex
-                      ? "animate-slide-in-left"
-                      : ""
-                }`}
-              >
-                <Image
-                  src={src || "/placeholder.svg"}
-                  alt={
-                    language === "ru"
-                      ? `Слайд ${index + 1} - Tut School языковая студия`
-                      : `Slide ${index + 1} - Tut School language studio`
-                  }
-                  sizes="100vw"
-                  fill
-                  className="object-cover transform transition-transform duration-10000 hover:scale-105"
-                  priority={index === 0}
-                />
-              </div>
-            ))}
-            <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/70 to-transparent"></div>
-           <div className="absolute inset-0 z-30 flex flex-col items-start justify-center px-4 text-white md:px-12 lg:px-20">
-  <div className="max-w-2xl">
-    <h1 className="mb-2 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl animate-fade-in-up">
-      Языковая школа
-    </h1>
-    <h2 className="mb-2 text-3xl md:text-3xl animate-fade-in-up animation-delay-150 ">
-      Английский и китайский
-    </h2>
-    <h5 className="mb-2 text-lg md:text-lg animate-fade-in-up animation-delay-150">
-      Химки Новогорск Куркино
-    </h5>
-    <p className="mb-8 text-lg md:text-xl animate-fade-in-up animation-delay-300">{t.hero.subtitle}</p>
-    <Link
-      href="/bookings"
-      className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-white transition-all hover:bg-primary/90 hover:gap-3 animate-fade-in-up animation-delay-600"
+<section id="hero" className="relative">
+  <div className="relative h-[600px] sm:h-[600px] w-full overflow-hidden">
+    {heroImages.map((src, index) => {
+      const isActive = index === currentImageIndex;
+      const isNext = index === (currentImageIndex + 1) % heroImages.length;
+
+      // Render only the current and next slide
+      if (!isActive && !isNext) return null;
+
+      return (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+          } ${
+            sliderDirection === "next" && isActive
+              ? "animate-slide-in-right"
+              : sliderDirection === "prev" && isActive
+              ? "animate-slide-in-left"
+              : ""
+          }`}
+        >
+          <Image
+            src={src || "/placeholder.svg"}
+            alt={
+              language === "ru"
+                ? `Слайд ${index + 1} - Tut School языковая студия`
+                : `Slide ${index + 1} - Tut School language studio`
+            }
+            sizes="100vw"
+            fill
+            className="object-cover transform transition-transform duration-10000 hover:scale-105"
+            priority={isActive && index === 0} // preload first slide only
+            loading={isActive ? "eager" : "lazy"} // lazy load others
+          />
+        </div>
+      );
+    })}
+
+    {/* Gradient overlay */}
+    <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/70 to-transparent"></div>
+
+    {/* Text Content */}
+    <div className="absolute inset-0 z-30 flex flex-col items-start justify-center px-4 text-white md:px-12 lg:px-20">
+      <div className="max-w-2xl">
+        <h1 className="mb-2 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl animate-fade-in-up">
+          Языковая школа
+        </h1>
+        <h2 className="mb-2 text-3xl md:text-3xl animate-fade-in-up animation-delay-150">
+          Английский и китайский
+        </h2>
+        <h5 className="mb-2 text-lg md:text-lg animate-fade-in-up animation-delay-150">
+          Химки Новогорск Куркино
+        </h5>
+        <p className="mb-8 text-lg md:text-xl animate-fade-in-up animation-delay-300">
+          {t.hero.subtitle}
+        </p>
+        <Link
+          href="/bookings"
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-white transition-all hover:bg-primary/90 hover:gap-3 animate-fade-in-up animation-delay-600"
+        >
+          {t.hero.cta}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </div>
+
+    {/* Carousel Navigation Arrows */}
+    <button
+      onClick={goToPrevSlide}
+      className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-all hover:bg-black/50"
+      aria-label="Previous slide"
     >
-      {t.hero.cta}
-      <ArrowRight className="h-4 w-4" />
-    </Link>
+      <ChevronLeft className="h-6 w-6" />
+    </button>
+    <button
+      onClick={goToNextSlide}
+      className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-all hover:bg-black/50"
+      aria-label="Next slide"
+    >
+      <ChevronRight className="h-6 w-6" />
+    </button>
+
+    {/* Carousel Navigation Dots */}
+    <div className="absolute bottom-6 left-0 right-0 z-30 flex justify-center gap-2">
+      {heroImages.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => goToSlide(index)}
+          className={`h-2 w-2 rounded-full transition-all ${
+            index === currentImageIndex ? "bg-white w-6" : "bg-white/50"
+          }`}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+    </div>
   </div>
-</div>
+</section>
 
-            {/* Carousel Navigation Arrows */}
-            <button
-              onClick={goToPrevSlide}
-              className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-all hover:bg-black/50"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button
-              onClick={goToNextSlide}
-              className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-all hover:bg-black/50"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-
-            {/* Carousel Navigation Dots */}
-            <div className="absolute bottom-6 left-0 right-0 z-30 flex justify-center gap-2">
-              {heroImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === currentImageIndex ? "bg-white w-6" : "bg-white/50"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Welcome Section */}
         <section id="welcome" className="py-16 bg-white">

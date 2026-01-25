@@ -42,7 +42,7 @@ export default function Navbar() {
   const translations = {
     ru: {
       schoolName: "Tut School",
-      schoolSubtitle: "Курсы иностранных языков, Школа искусств",
+      schoolSubtitle: "урсы иностранных языков",
       phone: "+7 916 7349246",
       email: "info@tut-school.ru",
       address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",
@@ -224,12 +224,19 @@ export default function Navbar() {
                 {t.email}
               </a>
             </div>
+            <a
+               href={`https://yandex.ru/maps/?text=${encodeURIComponent(t.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-400 hover:text-white transition-colors leading-relaxed"
+                >
             <div className="hidden xl:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
                 <Landmark className="h-3.5 w-3.5 text-primary" />
               </div>
               <AnimatedText text={t.address} className="text-xs text-gray-600 font-medium max-w-[300px] truncate" />
             </div>
+            </a>
           </div>
           <div className="flex items-center gap-4">
             <a
@@ -287,8 +294,8 @@ export default function Navbar() {
                 <Image
                   src="/logo.png"
                   alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
-                  width={100}
-                  height={100}
+                  width={120}
+                  height={120}
                   className="object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -417,42 +424,6 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* Masterclass Dropdown */}
-              <li className="relative">
-                <button
-                  onClick={() => toggleDropdown("masterclass")}
-                  className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
-                    activeDropdown === "masterclass"
-                      ? "bg-primary/10 text-primary"
-                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  }`}
-                >
-                  <AnimatedText text={t.nav.masterclass} />
-                  <ChevronDown
-                    className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "masterclass" ? "rotate-180" : ""}`}
-                  />
-                </button>
-                <div
-                  className={`absolute left-0 top-full z-10 mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl shadow-black/10 transition-all duration-300 ${
-                    activeDropdown === "masterclass"
-                      ? "translate-y-0 opacity-100 visible"
-                      : "translate-y-2 opacity-0 invisible"
-                  }`}
-                >
-                  <div className="p-2">
-                    {t.nav.masterclassDropdown.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="group flex items-center gap-3 rounded-xl px-4 py-3 text-xs font-medium text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
-                      >
-                        <span className="h-1.5 w-1.5 rounded-full bg-gray-300 transition-colors group-hover:bg-primary" />
-                        <AnimatedText text={item.title} />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </li>
 
               {/* News Link */}
               <li>
@@ -613,42 +584,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Masterclass Dropdown */}
-            <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
-              <button
-                onClick={() => toggleDropdown("masterclass-mobile")}
-                className="flex w-full items-center justify-between p-4 text-left font-semibold text-gray-700"
-              >
-                <span className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
-                    <Award className="h-4 w-4 text-primary" />
-                  </div>
-                  <AnimatedText text={t.nav.masterclass} />
-                </span>
-                <ChevronDown
-                  className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${activeDropdown === "masterclass-mobile" ? "rotate-180" : ""}`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  activeDropdown === "masterclass-mobile" ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-1 px-4 pb-4">
-                  {t.nav.masterclassDropdown.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-3 rounded-xl p-3 text-sm text-gray-600 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
-                      <AnimatedText text={item.title} />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
 
             {/* News Link */}
             <Link

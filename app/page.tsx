@@ -693,67 +693,6 @@ export default function HomePage() {
           href: '/preschoolers'
         },
         {
-  title: language === 'ru' ? 'КИТАЙСКИЙ ДЛЯ ДЕТЕЙ 7-9 ЛЕТ' : 'CHINESE FOR CHILDREN 7-9',
-  description: language === 'ru' 
-    ? 'Веселые занятия с основами китайского через игры и песни' 
-    : 'Fun introduction to Chinese through games and songs',
-  level: language === 'ru' ? 'Все уровни' : 'All Levels',
-  students: language === 'ru' ? '50+ студентов' : '50+ students',
-  image: '/assets/courses/Painting.jpg',
-  href: '/chinese/aged-7-9'
-},
-        {
-  title: language === 'ru' ? 'КИТАЙСКИЙ ДЛЯ ДЕТЕЙ 10-12 ЛЕТ' : 'CHINESE FOR CHILDREN 10-12',
-  description: language === 'ru' 
-    ? 'Веселые занятия с основами китайского через игры и песни' 
-    : 'Fun introduction to Chinese through games and songs',
-  level: language === 'ru' ? 'Все уровни' : 'All Levels',
-  students: language === 'ru' ? '50+ студентов' : '50+ students',
-  image: '/assets/gallery/Learning-Chinese.jpg',
-  href: '/chinese/aged-10-12'
-},
-{
-  title: language === 'ru' ? 'КИТАЙСКИЙ ДЛЯ ПОДРОСТКОВ' : 'CHINESE FOR TEENS',
-  description: language === 'ru' 
-    ? 'Современный китайский язык с актуальной лексикой' 
-    : 'Modern Chinese with relevant vocabulary',
-  level: language === 'ru' ? 'Все уровни' : 'All Levels',
-  students: language === 'ru' ? '40+ студентов' : '40+ students',
-  image: '/assets/gallery/Chinese-Practice.jpg',
-  href: '/chinese/teenagers'
-},
-
-{
-  title: language === 'ru' ? 'КИТАЙСКИЙ ДЛЯ ВЗРОСЛЫХ' : 'CHINESE FOR ADULTS',
-  description: language === 'ru' 
-    ? 'Практический китайский для работы и путешествий' 
-    : 'Practical Chinese for work and travel',
-  level: language === 'ru' ? 'Все уровни' : 'All levels',
-  students: language === 'ru' ? '70+ студентов' : '70+ students',
-  image: '/C-Adults.jpg',
-  href: '/chinese/adults'
-},
-{
-  title: language === 'ru' ? 'Китайский язык для дошкольников' : 'CHINESE FOR PRESCHOOLERS',
-  description: language === 'ru' 
-    ? 'Системное изучение китайского с элементами культуры' 
-    : 'Structured learning with cultural elements',
-  level: language === 'ru' ? 'Все уровни' : 'All Levels',
-  students: language === 'ru' ? '60+ студентов' : '60+ students',
-  image: '/assets/gallery/Calligraphy.jpg', 
-  href: '/chinese/preschoolers'
-},
-       {
-          title: language === 'ru' ? 'МАСТЕР-КЛАССЫ' : 'MASTERCLASSES',
-          description: language === 'ru' 
-            ? 'Интенсивные занятия с носителями языка' 
-            : 'Intensive workshops with native speakers',
-          level: language === 'ru' ? 'Все уровни' : 'All Levels',
-          students: language === 'ru' ? '60+ студентов' : '60+ students',
-          image: '/masterclass.jpg',
-          href: '/chinese-calligraphy'
-        },
-        {
           title: language === 'ru' ? 'РАЗГОВОРНЫЙ КЛУБ' : 'CONVERSATION CLUB',
           description: language === 'ru' 
             ? 'Практика разговорного английского в дружеской атмосфере' 
@@ -893,12 +832,19 @@ export default function HomePage() {
                 {t.contact.whatsapp}
               </Link>
             </div>
+            <a
+                  href={`https://yandex.ru/maps/?text=${encodeURIComponent(t.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-400 hover:text-white transition-colors leading-relaxed"
+                >
             <div className="mt-10 text-center">
               <p className="text-gray-600 flex items-center justify-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
                 {t.address}
               </p>
             </div>
+            </a>
           </div>
         </section>
 

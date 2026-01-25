@@ -42,7 +42,7 @@ export default function Navbar() {
   const translations = {
     ru: {
       schoolName: "Tut School",
-      schoolSubtitle: "урсы иностранных языков",
+      schoolSubtitle: "Kурсы иностранных языков",
       phone: "+7 916 7349246",
       email: "info@tut-school.ru",
       address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",

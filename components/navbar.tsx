@@ -279,13 +279,13 @@ export default function Navbar() {
       </div>
 
       {/* Premium Header */}
-      <header
-        className={`bg-white/95 backdrop-blur-md transition-all duration-500 ${
-          isScrolled 
-            ? "fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/5 border-b border-gray-100" 
-            : "relative border-b border-gray-100"
-        }`}
-      >
+     <header
+  className={`fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md transition-all duration-500 ${
+    isScrolled
+      ? "shadow-lg shadow-black/5 border-b border-gray-100"
+      : "border-b border-transparent"
+  }`}
+>
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo Section */}
           <div className="flex items-center gap-4">

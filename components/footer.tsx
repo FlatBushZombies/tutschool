@@ -14,7 +14,7 @@ export default function Footer() {
     ru: {
       schoolName: "Tut School",
       schoolSubtitle: "Курсы иностранных языков",
-      phone: "+7 (983) 662-97-30",
+      phone: "+7 916 7349246",
       email: "info@tutschool.ru",
       address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",
       rating: "4.9 на Яндексе",
@@ -27,7 +27,7 @@ export default function Footer() {
           { name: "Наши курсы", href: "/adults" },
           { name: "Расписание", href: "/schedule" },
           { name: "Преподаватели", href: "/teachers" },
-          { name: "ОВОСТИ", href: "/news" },
+          { name: "Новости", href: "/news" },
           { name: "Связаться с нами", href: "/contact" },
           { name: "Политика конфиденциальности", href: "/policy" },
         ],
@@ -46,7 +46,7 @@ export default function Footer() {
     en: {
       schoolName: "Tut School",
       schoolSubtitle: "Foreign Language Courses",
-      phone: "+7 (983) 662-97-30",
+      phone: "+7 916 7349246",
       email: "info@tutschool.ru",
       address: "Moscow region, Khimki, Novogorsk district, Zarechnaya street, 5, building 2",
       rating: "4.9 on Yandex",
@@ -91,14 +91,15 @@ export default function Footer() {
           {/* School info */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="relative h-14 w-14 rounded-xl bg-white/10 p-2 backdrop-blur-sm">
+              <div className="relative rounded-xl bg-white/10 p-2 backdrop-blur-sm">
                 <Link href="/" aria-label="Home">
                   <Image
-                    src="/logo.png"
-                    alt={t.schoolName}
-                    fill
-                    className="object-contain p-1"
-                  />
+                                    src="/logo.png"
+                                    alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
+                                    width={120}
+                                    height={120}
+                                    className="object-contain transition-transform duration-300 group-hover:scale-105"
+                                  />
                 </Link>
               </div>
               <div>

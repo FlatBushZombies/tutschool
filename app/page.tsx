@@ -499,452 +499,14 @@ export default function HomePage() {
       <ScrollProgress />
       <ScrollSpy sectionIds={sectionIds} onChange={(id) => setActiveSection(id)} threshold={0.3} />
 
-      <div className="bg-gray-100 py-2 text-sm">
-        <div className="container mx-auto flex flex-wrap items-center justify-between px-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-primary" />
-              <span className="text-gray-600">{t.workingHours}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4 text-primary" />
-              <a href={`tel:${t.phone.replace(/\s+/g, "")}`} className="text-gray-600 hover:text-primary">
-                {t.phone}
-              </a>
-            </div>
-            <div className="hidden items-center gap-2 md:flex">
-              <Mail className="h-4 w-4 text-primary" />
-              <a href={`mailto:${t.email}`} className="text-gray-600 hover:text-primary">
-                {t.email}
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Landmark className="h-4 w-4 text-primary" />
-              <span className="text-gray-600">{t.address}</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href="https://wa.me/+79167349246" className="text-green-600 hover:text-burgundy-900">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.472 3.5C18.188 1.24 15.073 0 11.786 0 5.354 0 .13 5.214.13 11.636c0 2.05.546 4.05 1.585 5.812L.13 24l6.726-1.763c1.698.925 3.607 1.41 5.55 1.41h.005c6.43 0 11.65-5.215 11.65-11.637 0-3.109-1.21-6.026-3.413-8.225l-.175-.285zM11.786 21.273h-.004c-1.743 0-3.45-.468-4.942-1.35l-.355-.21-3.676.964.985-3.595-.232-.368c-.975-1.55-1.49-3.335-1.49-5.17 0-5.356 4.364-9.713 9.728-9.713 2.6 0 5.034 1.012 6.868 2.85 1.832 1.837 2.842 4.276 2.84 6.873-.004 5.356-4.367 9.719-9.722 9.719zm5.333-7.278c-.294-.147-1.734-.856-2.002-.951-.268-.097-.463-.146-.658.146-.195.293-.757.951-.928 1.147-.17.195-.342.22-.635.073-.294-.147-1.24-.456-2.363-1.456-.873-.778-1.463-1.738-1.634-2.032-.171-.293-.018-.451.128-.597.132-.132.294-.342.44-.513.148-.17.197-.293.296-.488.098-.195.05-.366-.025-.513-.073-.147-.657-1.583-.9-2.168-.244-.585-.487-.487-.658-.487-.17 0-.367-.025-.562-.025-.195 0-.513.073-.781.366-.269.293-1.025.999-1.025 2.435 0 1.436 1.05 2.824 1.196 3.02.146.195 2.057 3.142 4.988 4.407.697.268 1.24.428 1.664.55.7.222 1.337.19 1.839.115.56-.085 1.734-.71 1.977-1.395.244-.684.244-1.27.17-1.393-.073-.122-.268-.196-.562-.342z" />
-              </svg>
-            </a>
-            <a href="https://t.me/TUTschoolNovogorsk" className="text-blue-500 hover:text-burgundy-900">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="blue">
-                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.51.26l.213-3.05 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
-              </svg>
-            </a>
-            <button
-              onClick={toggleLanguage}
-              className="ml-2 flex items-center gap-1 rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-200"
-            >
-              <Globe className="h-3 w-3" />
-              {t.languageToggle}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Header */}
-      <header
-        className={`border-b bg-white shadow-sm transition-all duration-300 ${
-          isScrolled ? "fixed top-0 left-0 right-0 z-50 shadow-md" : ""
-        }`}
-      >
-        <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <Link href="/">
-                <Image
-                  src="/logo.png"
-                  alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
-                  width={120}
-                  height={120}
-                  className="object-contain "
-                />
-              </Link>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-primary">{t.schoolName}</h2>
-              <p className="text-sm text-muted-foreground">{t.schoolSubtitle}</p>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block relative z-50" ref={dropdownRef}>
-            <ul className="flex gap-6">
-              <li className="relative">
-                <button
-                  onClick={() => toggleDropdown("about")}
-                  className={`flex items-center text-sm font-medium ${
-                    activeDropdown === "about" ? "text-primary" : "text-gray-700 hover:text-primary"
-                  }`}
-                >
-                  {t.nav.about}
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform ${activeDropdown === "about" ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {activeDropdown === "about" && (
-                  <div className="absolute left-0 top-full z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
-                    {t.nav.aboutDropdown.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-              <li className="relative">
-                <button
-                  onClick={() => toggleDropdown("courses")}
-                  className={`flex items-center text-sm font-medium ${
-                    activeDropdown === "courses" ? "text-primary" : "text-gray-700 hover:text-primary"
-                  }`}
-                >
-                  {t.nav.courses}
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform ${activeDropdown === "courses" ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {activeDropdown === "courses" && (
-                  <div className="absolute left-0 top-full z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
-                    {t.nav.coursesDropdown.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-              <li className="relative">
-                <button
-                  onClick={() => toggleDropdown("chinese")}
-                  className={`flex items-center text-sm font-medium ${
-                    activeDropdown === "chinese" ? "text-primary" : "text-gray-700 hover:text-primary"
-                  }`}
-                >
-                  {t.nav.chinese}
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform ${activeDropdown === "chinese" ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {activeDropdown === "chinese" && (
-                  <div className="absolute left-0 top-full z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
-                    {t.nav.chineseDropdown.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-              <li className="relative">
-                <button
-                  onClick={() => toggleDropdown("club")}
-                  className={`flex items-center text-sm font-medium ${
-                    activeDropdown === "club" ? "text-primary" : "text-gray-700 hover:text-primary"
-                  }`}
-                >
-                  {t.nav.club}
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform ${activeDropdown === "club" ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {activeDropdown === "club" && (
-                  <div className="absolute left-0 top-full z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
-                    {t.nav.clubDropdown.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-              <li className="relative">
-                <button
-                  onClick={() => toggleDropdown("masterclass")}
-                  className={`flex items-center text-sm font-medium ${
-                    activeDropdown === "masterclass" ? "text-primary" : "text-gray-700 hover:text-primary"
-                  }`}
-                >
-                  {t.nav.masterclass}
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform ${
-                      activeDropdown === "masterclass" ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {activeDropdown === "masterclass" && (
-                  <div className="absolute left-0 top-full z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
-                    {t.nav.masterclassDropdown.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-              <li>
-                <Link href="/news" className="text-sm font-medium text-gray-700 hover:text-primary">
-                  {t.nav.news}
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-primary">
-                  {t.nav.contacts}
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4 md:hidden">
-            <button className="rounded-md p-1 text-gray-700 hover:bg-gray-100" onClick={toggleMobileMenu}>
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
-            mobileMenuOpen ? "max-h-[calc(100vh-60px)]" : "max-h-0"
-          }`}
-        >
-          <div className="container mx-auto space-y-2 px-4 pb-4">
-            {/* About Dropdown */}
-            <div className="rounded-lg border border-gray-200">
-              <button
-                onClick={() => toggleDropdown("about-mobile")}
-                className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-700"
-              >
-                <span className="flex items-center gap-2">
-                  <Info className="h-5 w-5 text-primary" />
-                  {t.nav.about}
-                </span>
-                {activeDropdown === "about-mobile" ? (
-                  <X className="h-5 w-5 transition-transform" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 transition-transform" />
-                )}
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  activeDropdown === "about-mobile" ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-2 px-4 pb-4">
-                  {t.nav.aboutDropdown.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block rounded-md p-3 text-gray-600 hover:bg-gray-50"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Courses Dropdown */}
-            <div className="rounded-lg border border-gray-200">
-              <button
-                onClick={() => toggleDropdown("courses-mobile")}
-                className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-700"
-              >
-                <span className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-primary" />
-                  {t.nav.courses}
-                </span>
-                {activeDropdown === "courses-mobile" ? (
-                  <X className="h-5 w-5 transition-transform" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 transition-transform" />
-                )}
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  activeDropdown === "courses-mobile" ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-2 px-4 pb-4">
-                  {t.nav.coursesDropdown.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block rounded-md p-3 text-gray-600 hover:bg-gray-50"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Chinese Dropdown */}
-            <div className="rounded-lg border border-gray-200">
-              <button
-                onClick={() => toggleDropdown("chinese-mobile")}
-                className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-700"
-              >
-                <span className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-primary" />
-                  {t.nav.chinese}
-                </span>
-                {activeDropdown === "chinese-mobile" ? (
-                  <X className="h-5 w-5 transition-transform" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 transition-transform" />
-                )}
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  activeDropdown === "chinese-mobile" ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-2 px-4 pb-4">
-                  {t.nav.chineseDropdown.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block rounded-md p-3 text-gray-600 hover:bg-gray-50"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Club Dropdown */}
-            <div className="rounded-lg border border-gray-200">
-              <button
-                onClick={() => toggleDropdown("club-mobile")}
-                className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-700"
-              >
-                <span className="flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5 text-primary" />
-                  {t.nav.club}
-                </span>
-                {activeDropdown === "club-mobile" ? (
-                  <X className="h-5 w-5 transition-transform" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 transition-transform" />
-                )}
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  activeDropdown === "club-mobile" ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-2 px-4 pb-4">
-                  {t.nav.clubDropdown.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block rounded-md p-3 text-gray-600 hover:bg-gray-50"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Masterclass Dropdown */}
-            <div className="rounded-lg border border-gray-200">
-              <button
-                onClick={() => toggleDropdown("masterclass-mobile")}
-                className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-700"
-              >
-                <span className="flex items-center gap-2">
-                  <Award className="h-5 w-5 text-primary" />
-                  {t.nav.masterclass}
-                </span>
-                {activeDropdown === "masterclass-mobile" ? (
-                  <X className="h-5 w-5 transition-transform" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 transition-transform" />
-                )}
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  activeDropdown === "masterclass-mobile" ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-2 px-4 pb-4">
-                  {t.nav.masterclassDropdown.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block rounded-md p-3 text-gray-600 hover:bg-gray-50"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* News Link */}
-            <Link
-              href="/news"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 rounded-lg border border-gray-200 p-4 font-medium text-gray-700 hover:bg-gray-50"
-            >
-              <FileText className="h-5 w-5 text-primary" />
-              {t.nav.news}
-            </Link>
-
-            {/* Contacts Link */}
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 rounded-lg border border-gray-200 p-4 font-medium text-gray-700 hover:bg-gray-50"
-            >
-              <Phone className="h-5 w-5 text-primary" />
-              {t.nav.contacts}
-            </Link>
-          </div>
-        </div>
-      </header>
-
       <main>
-        {/* Hero Section */}
+        {/* Hero Section - Original Slider with Premium Styling */}
 <section id="hero" className="relative">
-  <div className="relative h-[600px] sm:h-[600px] w-full overflow-hidden">
+  <div className="relative h-[600px] sm:h-[600px] w-full overflow-hidden rounded-b-[2rem] shadow-2xl">
     {heroImages.map((src, index) => {
       const isActive = index === currentImageIndex;
       const isNext = index === (currentImageIndex + 1) % heroImages.length;
 
-      // Render only the current and next slide
       if (!isActive && !isNext) return null;
 
       return (
@@ -970,34 +532,34 @@ export default function HomePage() {
             sizes="100vw"
             fill
             className="object-cover transform transition-transform duration-10000 hover:scale-105"
-            priority={isActive && index === 0} // preload first slide only
-            loading={isActive ? "eager" : "lazy"} // lazy load others
+            priority={isActive && index === 0}
+            loading={isActive ? "eager" : "lazy"}
           />
         </div>
       );
     })}
 
-    {/* Gradient overlay */}
-    <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/70 to-transparent"></div>
+    {/* Premium Gradient overlay */}
+    <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
 
     {/* Text Content */}
     <div className="absolute inset-0 z-30 flex flex-col items-start justify-center px-4 text-white md:px-12 lg:px-20">
       <div className="max-w-2xl">
-        <h1 className="mb-2 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl animate-fade-in-up">
+        <h1 className="mb-2 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl animate-fade-in-up drop-shadow-lg">
           Языковая школа
         </h1>
         <h2 className="mb-2 text-3xl md:text-3xl animate-fade-in-up animation-delay-150">
           Английский и китайский
         </h2>
-        <h5 className="mb-2 text-lg md:text-lg animate-fade-in-up animation-delay-150">
+        <h5 className="mb-2 text-lg md:text-lg animate-fade-in-up animation-delay-150 text-white/90">
           Химки Новогорск Куркино
         </h5>
-        <p className="mb-8 text-lg md:text-xl animate-fade-in-up animation-delay-300">
+        <p className="mb-8 text-lg md:text-xl animate-fade-in-up animation-delay-300 text-white/85">
           {t.hero.subtitle}
         </p>
         <Link
           href="/bookings"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-white transition-all hover:bg-primary/90 hover:gap-3 animate-fade-in-up animation-delay-600"
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-medium text-white transition-all hover:bg-primary/90 hover:gap-3 hover:shadow-xl animate-fade-in-up animation-delay-600 shadow-lg"
         >
           {t.hero.cta}
           <ArrowRight className="h-4 w-4" />
@@ -1005,30 +567,30 @@ export default function HomePage() {
       </div>
     </div>
 
-    {/* Carousel Navigation Arrows */}
+    {/* Premium Carousel Navigation Arrows */}
     <button
       onClick={goToPrevSlide}
-      className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-all hover:bg-black/50"
+      className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-md p-3 text-white transition-all hover:bg-white/30 hover:scale-110 border border-white/30 shadow-lg"
       aria-label="Previous slide"
     >
       <ChevronLeft className="h-6 w-6" />
     </button>
     <button
       onClick={goToNextSlide}
-      className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-all hover:bg-black/50"
+      className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-md p-3 text-white transition-all hover:bg-white/30 hover:scale-110 border border-white/30 shadow-lg"
       aria-label="Next slide"
     >
       <ChevronRight className="h-6 w-6" />
     </button>
 
-    {/* Carousel Navigation Dots */}
-    <div className="absolute bottom-6 left-0 right-0 z-30 flex justify-center gap-2">
+    {/* Premium Carousel Navigation Dots */}
+    <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center gap-3">
       {heroImages.map((_, index) => (
         <button
           key={index}
           onClick={() => goToSlide(index)}
-          className={`h-2 w-2 rounded-full transition-all ${
-            index === currentImageIndex ? "bg-white w-6" : "bg-white/50"
+          className={`h-2.5 rounded-full transition-all duration-300 shadow-md ${
+            index === currentImageIndex ? "bg-white w-8" : "bg-white/50 w-2.5 hover:bg-white/70"
           }`}
           aria-label={`Go to slide ${index + 1}`}
         />
@@ -1038,34 +600,36 @@ export default function HomePage() {
 </section>
 
 
-        {/* Welcome Section */}
-        <section id="welcome" className="py-16 bg-white">
+        {/* Welcome Section - Premium */}
+        <section id="welcome" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto">
               <h2 className="mb-6 text-3xl sm:text-4xl font-extrabold tracking-tight text-primary">
                 {t.welcome.title}
               </h2>
-              <p className="mb-6 text-lg text-gray-700 leading-relaxed">{t.welcome.description}</p>
+              <p className="mb-6 text-lg text-gray-600 leading-relaxed">{t.welcome.description}</p>
               <ul className="mb-8 space-y-4 text-left">
                 {t.welcome.points.map((point, index) => (
-                  <li key={index} className="flex items-start">
-                    <ChevronRight className="mt-1 mr-2 h-5 w-5 flex-shrink-0 text-primary" />
-                    <span className="text-base text-gray-800">{point}</span>
+                  <li key={index} className="flex items-start group">
+                    <span className="mt-1 mr-3 h-6 w-6 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <ChevronRight className="h-4 w-4 text-primary" />
+                    </span>
+                    <span className="text-base text-gray-700">{point}</span>
                   </li>
                 ))}
               </ul>
               <Link
                 href="/our-values"
-                className="inline-flex items-center font-semibold text-primary hover:underline transition duration-150 ease-in-out"
+                className="inline-flex items-center font-semibold text-primary hover:text-primary/80 transition duration-150 ease-in-out group"
               >
                 {t.welcome.cta}
-                <ChevronRight className="ml-2 h-4 w-4" />
+                <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Courses Section */}
+        {/* Courses Section - Premium */}
         <section id="courses" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
@@ -1076,7 +640,7 @@ export default function HomePage() {
                   : "Choose from our comprehensive programs taught by experienced educators"}
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {[
         {
           title: language === 'ru' ? 'АНГЛИЙСКИЙ ДЛЯ ДЕТЕЙ 7-9 ЛЕТ' : 'ENGLISH FOR CHILDREN 7-9',
@@ -1202,32 +766,32 @@ export default function HomePage() {
               ].map((course) => (
                 <div
                   key={course.title}
-                  className="group relative overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100"
+                  className="group relative overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-52 overflow-hidden">
                     <Image
                       src={course.image || "/placeholder.svg"}
                       alt={course.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{course.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{course.title}</h3>
 
                     <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
-                      <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">{course.level}</span>
+                      <span className="text-xs bg-primary/10 text-primary px-4 py-1.5 rounded-full font-medium">{course.level}</span>
                     </div>
 
                     <Link
                       href={course.href}
-                      className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 transition-colors duration-300"
+                      className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-primary rounded-xl hover:bg-primary/90 transition-all duration-300 group-hover:shadow-lg"
                     >
                       {language === "ru" ? "Подробнее" : "Read More"}
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -1239,54 +803,55 @@ export default function HomePage() {
         {/* Values Section */}
         <ValuesSectionCard language={language} />
 
-        {/* Testimonials Section */}
-        <section id="testimonials" className="py-16">
+        {/* Testimonials Section - Premium */}
+        <section id="testimonials" className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="mb-2 text-center text-3xl font-bold text-primary">{t.testimonials.title}</h2>
-            <div className="mx-auto mb-12 h-1 w-20 bg-primary"></div>
-            <div className="grid gap-6 md:grid-cols-3">
+            <h2 className="mb-4 text-center text-3xl md:text-4xl font-bold text-primary">{t.testimonials.title}</h2>
+            <div className="mx-auto mb-12 h-1 w-24 bg-primary rounded-full"></div>
+            <div className="grid gap-8 md:grid-cols-3">
               {t.testimonials.items.map((item, index) => (
-                <div key={index} className="rounded-lg bg-white p-6 shadow-md">
-                  <div className="mb-4 text-yellow-400">
-                    <Star className="inline-block h-5 w-5 fill-current" />
-                    <Star className="inline-block h-5 w-5 fill-current" />
-                    <Star className="inline-block h-5 w-5 fill-current" />
-                    <Star className="inline-block h-5 w-5 fill-current" />
-                    <Star className="inline-block h-5 w-5 fill-current" />
+                <div key={index} className="rounded-2xl bg-gray-50 p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <div className="mb-5 text-amber-400 flex gap-1">
+                    <Star className="h-5 w-5 fill-current" />
+                    <Star className="h-5 w-5 fill-current" />
+                    <Star className="h-5 w-5 fill-current" />
+                    <Star className="h-5 w-5 fill-current" />
+                    <Star className="h-5 w-5 fill-current" />
                   </div>
-                  <p className="mb-4 italic text-gray-600">"{item.text}"</p>
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <User className="h-5 w-5" />
+                  <p className="mb-6 text-gray-600 leading-relaxed line-clamp-6">"{item.text}"</p>
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <User className="h-6 w-6" />
                     </div>
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-semibold text-gray-900">{item.name}</span>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-8 text-center">
+            <div className="mt-12 text-center">
               <a
                 href="https://tut-school.clients.site/#rating"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-md bg-primary px-6 py-2 text-white transition hover:bg-primary-dark"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-white font-medium transition-all hover:bg-primary/90 hover:shadow-lg"
               >
                 {t.testimonials.reviews}
+                <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="bg-gray-50 py-16">
+        {/* Contact Section - Premium */}
+        <section id="contact" className="bg-gray-50 py-20">
           <div className="container mx-auto px-4">
-            <h2 className="mb-8 text-center text-3xl font-bold text-primary">{t.contact.title}</h2>
-            <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-4">
+            <h2 className="mb-10 text-center text-3xl md:text-4xl font-bold text-primary">{t.contact.title}</h2>
+            <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-4">
               <Link
                 href={`tel:${t.phone.replace(/\s+/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-all hover:bg-primary/90"
+                className="flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-white font-medium transition-all hover:bg-primary/90 hover:shadow-lg hover:scale-105"
               >
                 <Phone className="h-5 w-5" />
                 {t.contact.phone}
@@ -1295,7 +860,7 @@ export default function HomePage() {
                 href="https://yandex.com/maps/10758/himki/?ll=37.374147%2C55.894611&mode=routes&rtext=~55.894611%2C37.374147&rtt=auto&ruri=~&z=17"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-blue-500 px-4 py-2 text-white transition-all hover:bg-blue-600"
+                className="flex items-center gap-3 rounded-full bg-blue-500 px-6 py-3 text-white font-medium transition-all hover:bg-blue-600 hover:shadow-lg hover:scale-105"
               >
                 <Navigation className="h-5 w-5" />
                 {t.contact.directions}
@@ -1304,7 +869,7 @@ export default function HomePage() {
                 href="mailto:info@tutschool.ru"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-gray-700 px-4 py-2 text-white transition-all hover:bg-gray-800"
+                className="flex items-center gap-3 rounded-full bg-gray-700 px-6 py-3 text-white font-medium transition-all hover:bg-gray-800 hover:shadow-lg hover:scale-105"
               >
                 <MessageSquare className="h-5 w-5" />
                 {t.contact.write}
@@ -1313,7 +878,7 @@ export default function HomePage() {
                 href="https://t.me/TUTschoolNovogorsk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-blue-400 px-4 py-2 text-white transition-all hover:bg-blue-500"
+                className="flex items-center gap-3 rounded-full bg-sky-500 px-6 py-3 text-white font-medium transition-all hover:bg-sky-600 hover:shadow-lg hover:scale-105"
               >
                 <Send className="h-5 w-5" />
                 {t.contact.telegram}
@@ -1322,34 +887,34 @@ export default function HomePage() {
                 href="https://wa.me/+79167349246"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-green-500 px-4 py-2 text-white transition-all hover:bg-green-600"
+                className="flex items-center gap-3 rounded-full bg-emerald-500 px-6 py-3 text-white font-medium transition-all hover:bg-emerald-600 hover:shadow-lg hover:scale-105"
               >
                 <MessageSquare className="h-5 w-5" />
                 {t.contact.whatsapp}
               </Link>
             </div>
-            <div className="mt-8 text-center">
-              <p className="text-gray-600">
-                <MapPin className="mr-1 inline-block h-4 w-4" />
+            <div className="mt-10 text-center">
+              <p className="text-gray-600 flex items-center justify-center gap-2">
+                <MapPin className="h-5 w-5 text-primary" />
                 {t.address}
               </p>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section id="cta" className="py-16">
+        {/* CTA Section - Premium */}
+        <section id="cta" className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="overflow-hidden rounded-xl bg-primary shadow-xl">
+            <div className="overflow-hidden rounded-3xl bg-primary shadow-2xl">
               <div className="relative">
-                <div className="relative px-8 py-16 text-center text-white md:px-12 lg:px-16">
-                  <h2 className="mb-4 text-3xl font-bold md:text-4xl">{t.trial.title}</h2>
+                <div className="relative px-8 py-20 text-center text-white md:px-12 lg:px-16">
+                  <h2 className="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl max-w-3xl mx-auto leading-tight">{t.trial.title}</h2>
                   <Link
                     href="/bookings"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 font-medium text-primary transition-all hover:bg-gray-100 hover:gap-3"
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-semibold text-primary transition-all hover:bg-gray-100 hover:gap-3 hover:shadow-xl hover:scale-105"
                   >
                     {t.trial.cta}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
               </div>

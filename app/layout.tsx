@@ -7,6 +7,7 @@ import Script from "next/script";
 import YandexMetrika from "@/components/YandexMetrika";
 import { Toaster } from "sonner";
 import "./globals.css";
+import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -163,6 +164,7 @@ export default function RootLayout({
         </>
       </head>
       <body className={inter.className}>
+        <Navbar />
         {children}
         <Footer />
         <Toaster />

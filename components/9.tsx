@@ -4,19 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
-import {
-  ChevronDown,
-  Globe,
-  Award,
-  Phone,
-  FileText,
-  Info,
-  MessageCircle,
-  BookOpen,
-  Clock,
-  Mail,
-  Landmark
-} from "lucide-react"
+import { ChevronDown, Globe, Award, Phone, FileText, Info, MessageCircle, BookOpen, Clock, Mail, Landmark } from "lucide-react"
 
 // Animated text component for smooth language transitions
 function AnimatedText({ text, className = "" }: { text: string; className?: string }) {
@@ -36,93 +24,10 @@ function AnimatedText({ text, className = "" }: { text: string; className?: stri
 
   return (
     <span
-      className={`inline-block transition-all duration-300 ${
-        isAnimating ? "opacity-0 translate-y-1" : "opacity-100 translate-y-0"
-      } ${className}`}
+      className={`inline-block transition-all duration-300 ${isAnimating ? "opacity-0 translate-y-1" : "opacity-100 translate-y-0"} ${className}`}
     >
       {displayText}
     </span>
-  )
-}
-
-/**
- * TopBar Component (Reusable)
- * Renders the same top bar content in two places
- */
-function TopBar({ t }: { t: any }) {
-  return (
-    <div className="bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-100">
-      <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-2.5">
-        <div className="flex flex-wrap items-center gap-6">
-          <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Clock className="h-3.5 w-3.5 text-primary" />
-            </div>
-            <AnimatedText text={t.workingHours} className="text-xs text-gray-600 font-medium" />
-          </div>
-
-          <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Phone className="h-3.5 w-3.5 text-primary" />
-            </div>
-            <a
-              href={`tel:${t.phone.replace(/\s+/g, "")}`}
-              className="text-xs font-medium text-gray-600 transition-colors hover:text-primary"
-            >
-              {t.phone}
-            </a>
-          </div>
-
-          <div className="hidden lg:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Mail className="h-3.5 w-3.5 text-primary" />
-            </div>
-            <a href={`mailto:${t.email}`} className="text-xs font-medium text-gray-600 transition-colors hover:text-primary">
-              {t.email}
-            </a>
-          </div>
-
-          <div className="hidden xl:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Landmark className="h-3.5 w-3.5 text-primary" />
-            </div>
-            <AnimatedText text={t.address} className="text-xs text-gray-600 font-medium max-w-[300px] truncate" />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <a
-            href="https://wa.me/+79167349246"
-            className="group flex h-8 w-8 items-center justify-center rounded-full bg-green-50 text-green-600 transition-all duration-300 hover:bg-green-100 hover:scale-110 hover:shadow-md"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110">
-              <path d="M20.472 3.5C18.188 1.24 15.073 0 11.786 0 5.354 0 .13 5.214.13 11.636c0 2.05.546 4.05 1.585 5.812L.13 24l6.726-1.763c1.698.925 3.607 1.41 5.55 1.41h.005c6.43 0 11.65-5.215 11.65-11.637 0-3.109-1.21-6.026-3.413-8.225l-.175-.285zM11.786 21.273h-.004c-1.743 0-3.45-.468-4.942-1.35l-.355-.21-3.676.964.985-3.595-.232-.368c-.975-1.55-1.49-3.335-1.49-5.17 0-5.356 4.364-9.713 9.728-9.713 2.6 0 5.034 1.012 6.868 2.85 1.832 1.837 2.842 4.276 2.84 6.873-.004 5.356-4.367 9.719-9.722 9.719zm5.333-7.278c-.294-.147-1.734-.856-2.002-.951-.268-.097-.463-.146-.658.146-.195.293-.757.951-.928 1.147-.17.195-.342.22-.635.073-.294-.147-1.24-.456-2.363-1.456-.873-.778-1.463-1.738-1.634-2.032-.171-.293-.018-.451.128-.597.132-.132.294-.342.44-.513.148-.17.197-.293.296-.488.098-.195.05-.366-.025-.513-.073-.147-.657-1.583-.9-2.168-.244-.585-.487-.487-.658-.487-.17 0-.367-.025-.562-.025-.195 0-.513.073-.781.366-.269.293-1.025.999-1.025 2.435 0 1.436 1.05 2.824 1.196 3.02.146.195 2.057 3.142 4.988 4.407.697.268 1.24.428 1.664.55.7.222 1.337.19 1.839.115.56-.085 1.734-.71 1.977-1.395.244-.684.244-1.27.17-1.393-.073-.122-.268-.196-.562-.342z" />
-            </svg>
-          </a>
-
-          <a
-            href="https://t.me/TUTschoolNovogorsk"
-            className="group flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition-all duration-300 hover:bg-blue-100 hover:scale-110 hover:shadow-md"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110">
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.51.26l.213-3.05 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
-            </svg>
-          </a>
-
-          <button
-            onClick={() => {}}
-            className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:bg-gray-50"
-          >
-            <Globe className="h-3.5 w-3.5 text-primary transition-transform duration-300 group-hover:rotate-12" />
-            <span className="relative overflow-hidden">
-              <span className="inline-block transition-all duration-300">
-                {t.languageToggle}
-              </span>
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -167,12 +72,12 @@ export default function Navbar() {
           { title: "ДЕТИ 7-9 ЛЕТ", href: "/chinese/aged-7-9" },
           { title: "ДЕТИ 10-12 ЛЕТ", href: "/chinese/aged-10-12" },
           { title: "ПОДРОСТКИ", href: "/chinese/teenagers" },
-          { title: "ВЗРОСЛЕ", href: "/chinese/adults" },
+          { title: "ВЗРОСЛЫЕ", href: "/chinese/adults" },
         ],
         club: "РАЗГОВОРНЫЙ КЛУБ",
         clubDropdown: [
           { title: "ПОДРОСТКИ", href: "/conversation-club/teenagers" },
-          { title: "ВЗРОСЛЕ", href: "/conversation-club/adults" },
+          { title: "ВЗРОСЛЫЕ", href: "/conversation-club/adults" },
         ],
         masterclass: "МАСТЕР-КЛАССЫ",
         masterclassDropdown: [
@@ -182,6 +87,7 @@ export default function Navbar() {
         news: "НОВОСТИ",
         contacts: "КОНТАКТЫ",
       },
+      values: {},
       cta: "Записаться на пробное занятие",
       languageToggle: "English",
       swiperNavigation: {
@@ -234,7 +140,16 @@ export default function Navbar() {
           { title: "CREATIVE WORKSHOP", href: "/creative-workshops" },
         ],
         news: "NEWS",
+        masterclasses: "MASTERCLASS",
         contacts: "CONTACTS",
+      },
+      values: {
+        creative: {
+          title: "Creativity",
+          description:
+            "Creativity and languages are closely connected because both help us communicate with the world and express our emotions. In our creativity and art classes, we teach the basics of visual arts and bring lots of joy!",
+          points: [],
+        },
       },
       cta: "Book a trial lesson",
       languageToggle: "Русский",
@@ -283,21 +198,96 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Topbar Above Header */}
-      <TopBar t={t} />
+      {/* Premium Top Bar */}
+      <div className="bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-100">
+        <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-2.5">
+          <div className="flex flex-wrap items-center gap-6">
+            <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+                <Clock className="h-3.5 w-3.5 text-primary" />
+              </div>
+              <AnimatedText text={t.workingHours} className="text-xs text-gray-600 font-medium" />
+            </div>
+            <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+                <Phone className="h-3.5 w-3.5 text-primary" />
+              </div>
+              <a href={`tel:${t.phone.replace(/\s+/g, "")}`} className="text-xs font-medium text-gray-600 transition-colors hover:text-primary">
+                {t.phone}
+              </a>
+            </div>
+            <div className="hidden lg:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+                <Mail className="h-3.5 w-3.5 text-primary" />
+              </div>
+              <a href={`mailto:${t.email}`} className="text-xs font-medium text-gray-600 transition-colors hover:text-primary">
+                {t.email}
+              </a>
+            </div>
+            <a
+               href={`https://yandex.ru/maps/?text=${encodeURIComponent(t.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-400 hover:text-white transition-colors leading-relaxed"
+                >
+            <div className="hidden xl:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+                <Landmark className="h-3.5 w-3.5 text-primary" />
+              </div>
+              <AnimatedText text={t.address} className="text-xs text-gray-600 font-medium max-w-[300px] truncate" />
+            </div>
+            </a>
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://wa.me/+79167349246"
+              className="group flex h-8 w-8 items-center justify-center rounded-full bg-green-50 text-green-600 transition-all duration-300 hover:bg-green-100 hover:scale-110 hover:shadow-md"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110">
+                <path d="M20.472 3.5C18.188 1.24 15.073 0 11.786 0 5.354 0 .13 5.214.13 11.636c0 2.05.546 4.05 1.585 5.812L.13 24l6.726-1.763c1.698.925 3.607 1.41 5.55 1.41h.005c6.43 0 11.65-5.215 11.65-11.637 0-3.109-1.21-6.026-3.413-8.225l-.175-.285zM11.786 21.273h-.004c-1.743 0-3.45-.468-4.942-1.35l-.355-.21-3.676.964.985-3.595-.232-.368c-.975-1.55-1.49-3.335-1.49-5.17 0-5.356 4.364-9.713 9.728-9.713 2.6 0 5.034 1.012 6.868 2.85 1.832 1.837 2.842 4.276 2.84 6.873-.004 5.356-4.367 9.719-9.722 9.719zm5.333-7.278c-.294-.147-1.734-.856-2.002-.951-.268-.097-.463-.146-.658.146-.195.293-.757.951-.928 1.147-.17.195-.342.22-.635.073-.294-.147-1.24-.456-2.363-1.456-.873-.778-1.463-1.738-1.634-2.032-.171-.293-.018-.451.128-.597.132-.132.294-.342.44-.513.148-.17.197-.293.296-.488.098-.195.05-.366-.025-.513-.073-.147-.657-1.583-.9-2.168-.244-.585-.487-.487-.658-.487-.17 0-.367-.025-.562-.025-.195 0-.513.073-.781.366-.269.293-1.025.999-1.025 2.435 0 1.436 1.05 2.824 1.196 3.02.146.195 2.057 3.142 4.988 4.407.697.268 1.24.428 1.664.55.7.222 1.337.19 1.839.115.56-.085 1.734-.71 1.977-1.395.244-.684.244-1.27.17-1.393-.073-.122-.268-.196-.562-.342z" />
+              </svg>
+            </a>
+            <a
+              href="https://t.me/TUTschoolNovogorsk"
+              className="group flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition-all duration-300 hover:bg-blue-100 hover:scale-110 hover:shadow-md"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110">
+                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.51.26l.213-3.05 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
+              </svg>
+            </a>
+            {/* Premium Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:bg-gray-50"
+            >
+              <Globe className="h-3.5 w-3.5 text-primary transition-transform duration-300 group-hover:rotate-12" />
+              <span className="relative overflow-hidden">
+                <span
+                  className={`inline-block transition-all duration-300 ${language === "ru" ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
+                >
+                  English
+                </span>
+                <span
+                  className={`absolute left-0 top-0 inline-block transition-all duration-300 ${language === "en" ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}
+                >
+                  Русский
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
 
-      {/* Header */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md transition-all duration-500 ${
-          isScrolled ? "shadow-lg shadow-black/5 border-b border-gray-100" : "border-b border-transparent"
-        }`}
-      >
-        {/* Same Topbar Inside Header */}
-        <TopBar t={t} />
-
-        {/* Header content */}
+      {/* Premium Header */}
+     <header
+  className={`fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md transition-all duration-500 ${
+    isScrolled
+      ? "shadow-lg shadow-black/5 border-b border-gray-100"
+      : "border-b border-transparent"
+  }`}
+>
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
-          {/* Logo */}
+          {/* Logo Section */}
           <div className="flex items-center gap-4">
             <Link href="/" className="group relative flex items-center gap-4">
               <div className="relative overflow-hidden rounded-2xl transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/20">
@@ -323,20 +313,26 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:block relative z-50" ref={dropdownRef}>
             <ul className="flex items-center gap-1">
-              {/* About */}
+              {/* About Dropdown */}
               <li className="relative">
                 <button
                   onClick={() => toggleDropdown("about")}
                   className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
-                    activeDropdown === "about" ? "bg-primary/10 text-primary" : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    activeDropdown === "about"
+                      ? "bg-primary/10 text-primary"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
                   <AnimatedText text={t.nav.about} />
-                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "about" ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "about" ? "rotate-180" : ""}`}
+                  />
                 </button>
                 <div
                   className={`absolute left-0 top-full z-10 mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl shadow-black/10 transition-all duration-300 ${
-                    activeDropdown === "about" ? "translate-y-0 opacity-100 visible" : "translate-y-2 opacity-0 invisible"
+                    activeDropdown === "about"
+                      ? "translate-y-0 opacity-100 visible"
+                      : "translate-y-2 opacity-0 invisible"
                   }`}
                 >
                   <div className="p-2">
@@ -354,20 +350,26 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* Courses */}
+              {/* Courses Dropdown */}
               <li className="relative">
                 <button
                   onClick={() => toggleDropdown("courses")}
                   className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
-                    activeDropdown === "courses" ? "bg-primary/10 text-primary" : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    activeDropdown === "courses"
+                      ? "bg-primary/10 text-primary"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
                   <AnimatedText text={t.nav.courses} />
-                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "courses" ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "courses" ? "rotate-180" : ""}`}
+                  />
                 </button>
                 <div
                   className={`absolute left-0 top-full z-10 mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl shadow-black/10 transition-all duration-300 ${
-                    activeDropdown === "courses" ? "translate-y-0 opacity-100 visible" : "translate-y-2 opacity-0 invisible"
+                    activeDropdown === "courses"
+                      ? "translate-y-0 opacity-100 visible"
+                      : "translate-y-2 opacity-0 invisible"
                   }`}
                 >
                   <div className="p-2">
@@ -385,20 +387,26 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* Club */}
+              {/* Club Dropdown */}
               <li className="relative">
                 <button
                   onClick={() => toggleDropdown("club")}
                   className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
-                    activeDropdown === "club" ? "bg-primary/10 text-primary" : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    activeDropdown === "club"
+                      ? "bg-primary/10 text-primary"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
                   <AnimatedText text={t.nav.club} />
-                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "club" ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-300 ${activeDropdown === "club" ? "rotate-180" : ""}`}
+                  />
                 </button>
                 <div
                   className={`absolute left-0 top-full z-10 mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl shadow-black/10 transition-all duration-300 ${
-                    activeDropdown === "club" ? "translate-y-0 opacity-100 visible" : "translate-y-2 opacity-0 invisible"
+                    activeDropdown === "club"
+                      ? "translate-y-0 opacity-100 visible"
+                      : "translate-y-2 opacity-0 invisible"
                   }`}
                 >
                   <div className="p-2">
@@ -416,7 +424,8 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* News */}
+
+              {/* News Link */}
               <li>
                 <Link
                   href="/news"
@@ -426,7 +435,7 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              {/* Contacts */}
+              {/* Contacts Link */}
               <li>
                 <Link
                   href="/contact"
@@ -438,6 +447,8 @@ export default function Navbar() {
             </ul>
           </nav>
 
+          
+
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4 lg:hidden">
             <button
@@ -445,8 +456,12 @@ export default function Navbar() {
               onClick={toggleMobileMenu}
             >
               <span className="sr-only">Toggle menu</span>
-              <Menu className={`h-5 w-5 absolute transition-all duration-300 ${mobileMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`} />
-              <X className={`h-5 w-5 absolute transition-all duration-300 ${mobileMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`} />
+              <Menu
+                className={`h-5 w-5 absolute transition-all duration-300 ${mobileMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`}
+              />
+              <X
+                className={`h-5 w-5 absolute transition-all duration-300 ${mobileMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`}
+              />
             </button>
           </div>
         </div>

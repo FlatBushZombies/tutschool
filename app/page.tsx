@@ -501,8 +501,8 @@ export default function HomePage() {
 
       <main>
         {/* Hero Section - Original Slider with Premium Styling */}
-<section id="hero" className="relative">
-  <div className="relative h-[600px] sm:h-[600px] w-full overflow-hidden rounded-b-[2rem] shadow-2xl">
+        <section id="hero" className="relative">
+  <div className="relative h-[720px] sm:h-[780px] w-full overflow-hidden rounded-b-[2rem] shadow-2xl">
     {heroImages.map((src, index) => {
       const isActive = index === currentImageIndex;
       const isNext = index === (currentImageIndex + 1) % heroImages.length;
@@ -531,13 +531,14 @@ export default function HomePage() {
             }
             sizes="100vw"
             fill
-            className="object-cover transform transition-transform duration-10000 hover:scale-105"
+            className="object-cover transform transition-transform duration-10000 scale-110 hover:scale-115"
             priority={isActive && index === 0}
             loading={isActive ? "eager" : "lazy"}
           />
         </div>
       );
     })}
+
 
     {/* Premium Gradient overlay */}
     <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>

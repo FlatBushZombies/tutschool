@@ -271,7 +271,6 @@ export default function ValuesPage() {
     },
   }
 
-
   const t = translations[language]
 
   const toggleLanguage = () => {
@@ -405,23 +404,25 @@ export default function ValuesPage() {
 
       <main className="flex-1 bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-primary py-16 text-white">
-          <div className="container mx-auto px-4">
+        <section className="bg-white pt-[110px] pb-16">
+          <div className="container mx-auto px-6">
             <motion.div
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
               variants={fadeIn}
-              className="text-center"
+              className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-10 shadow-xl"
             >
-              <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.title}</h1>
-              <p className="mx-auto max-w-2xl text-lg text-white/80">{t.subtitle}</p>
+              <div className="text-center">
+                <h1 className="mb-4 text-4xl font-bold md:text-5xl text-primary">{t.title}</h1>
+                <p className="mx-auto max-w-2xl text-lg text-gray-600">{t.subtitle}</p>
+              </div>
             </motion.div>
           </div>
         </section>
 
         {/* Values Section */}
         <section className="py-16">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-6">
             {/* Community Value */}
             <motion.div
               initial="hidden"
@@ -429,8 +430,8 @@ export default function ValuesPage() {
               variants={staggerContainer}
               className="mb-20"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="overflow-hidden rounded-lg shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-lg">
                   <Swiper
                     modules={[Navigation, Pagination, A11y, Autoplay]}
                     spaceBetween={0}
@@ -441,7 +442,7 @@ export default function ValuesPage() {
                     }}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="h-[300px] md:h-[400px]"
+                    className="h-[320px] md:h-[420px]"
                   >
                     {valueImages.community.map((image, index) => (
                       <SwiperSlide key={index}>
@@ -456,8 +457,11 @@ export default function ValuesPage() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <SwiperNavigation id="community" />
+                  <div className="p-6">
+                    <SwiperNavigation id="community" />
+                  </div>
                 </div>
+
                 <div className="flex flex-col justify-center">
                   <div className="mb-4 flex items-center">
                     <Users className="mr-3 h-6 w-6 text-primary" />
@@ -475,8 +479,8 @@ export default function ValuesPage() {
               variants={staggerContainer}
               className="mb-20"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-1 md:order-2 overflow-hidden rounded-lg shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="order-1 md:order-2 overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-lg">
                   <Swiper
                     modules={[Navigation, Pagination, A11y, Autoplay]}
                     spaceBetween={0}
@@ -487,7 +491,7 @@ export default function ValuesPage() {
                     }}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="h-[300px] md:h-[400px]"
+                    className="h-[320px] md:h-[420px]"
                   >
                     {valueImages.quality.map((image, index) => (
                       <SwiperSlide key={index}>
@@ -502,8 +506,11 @@ export default function ValuesPage() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <SwiperNavigation id="quality" />
+                  <div className="p-6">
+                    <SwiperNavigation id="quality" />
+                  </div>
                 </div>
+
                 <div className="order-2 md:order-1 flex flex-col justify-center">
                   <div className="mb-4 flex items-center">
                     <BookOpen className="mr-3 h-6 w-6 text-primary" />
@@ -537,8 +544,8 @@ export default function ValuesPage() {
               variants={staggerContainer}
               className="mb-20"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="overflow-hidden rounded-lg shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-lg">
                   <Swiper
                     modules={[Navigation, Pagination, A11y, Autoplay]}
                     spaceBetween={0}
@@ -549,7 +556,7 @@ export default function ValuesPage() {
                     }}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="h-[300px] md:h-[400px]"
+                    className="h-[320px] md:h-[420px]"
                   >
                     {valueImages.geography.map((image, index) => (
                       <SwiperSlide key={index}>
@@ -564,8 +571,11 @@ export default function ValuesPage() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <SwiperNavigation id="geography" />
+                  <div className="p-6">
+                    <SwiperNavigation id="geography" />
+                  </div>
                 </div>
+
                 <div className="flex flex-col justify-center">
                   <div className="mb-4 flex items-center">
                     <Heart className="mr-3 h-6 w-6 text-primary" />
@@ -583,8 +593,8 @@ export default function ValuesPage() {
               variants={staggerContainer}
               className="mb-20"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-1 md:order-2 overflow-hidden rounded-lg shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="order-1 md:order-2 overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-lg">
                   <Swiper
                     modules={[Navigation, Pagination, A11y, Autoplay]}
                     spaceBetween={0}
@@ -595,7 +605,7 @@ export default function ValuesPage() {
                     }}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="h-[300px] md:h-[400px]"
+                    className="h-[320px] md:h-[420px]"
                   >
                     {valueImages.result.map((image, index) => (
                       <SwiperSlide key={index}>
@@ -610,8 +620,11 @@ export default function ValuesPage() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <SwiperNavigation id="result" />
+                  <div className="p-6">
+                    <SwiperNavigation id="result" />
+                  </div>
                 </div>
+
                 <div className="order-2 md:order-1 flex flex-col justify-center">
                   <div className="mb-4 flex items-center">
                     <Lightbulb className="mr-3 h-6 w-6 text-primary" />
@@ -629,8 +642,8 @@ export default function ValuesPage() {
               variants={staggerContainer}
               className="mb-20"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="overflow-hidden rounded-lg shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-lg">
                   <Swiper
                     modules={[Navigation, Pagination, A11y, Autoplay]}
                     spaceBetween={0}
@@ -641,7 +654,7 @@ export default function ValuesPage() {
                     }}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="h-[300px] md:h-[400px]"
+                    className="h-[320px] md:h-[420px]"
                   >
                     {valueImages.creative.map((image, index) => (
                       <SwiperSlide key={index}>
@@ -656,8 +669,11 @@ export default function ValuesPage() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <SwiperNavigation id="creative" />
+                  <div className="p-6">
+                    <SwiperNavigation id="creative" />
+                  </div>
                 </div>
+
                 <div className="flex flex-col justify-center">
                   <div className="mb-4 flex items-center">
                     <Sparkles className="mr-3 h-6 w-6 text-primary" />
@@ -672,12 +688,12 @@ export default function ValuesPage() {
 
         {/* CTA Section */}
         <section className="bg-primary py-16 text-white">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto px-6 text-center">
             <motion.div initial="hidden" animate={isLoaded ? "visible" : "hidden"} variants={fadeIn}>
               <h2 className="mb-6 text-3xl font-bold">{t.cta}</h2>
               <Link
                 href="/bookings"
-                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-primary transition-colors hover:bg-gray-100"
+                className="inline-flex items-center rounded-full bg-white px-8 py-3 font-semibold text-primary transition-colors hover:bg-gray-100"
               >
                 <Sparkles className="mr-2 h-5 w-5" />
                 {language === "ru" ? "Записаться" : "Book Now"}

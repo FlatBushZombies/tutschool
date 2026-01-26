@@ -73,8 +73,8 @@ export default function Teachers() {
   const t = {
     schoolName: "Tut School",
     schoolSubtitle: "Курсы иностранных языков",
-    phone: "+7 (983) 662-97-30",
-    email: "info@tutschool.ru",
+    phone: "+7 916 7349246",
+    email: "info@tut-school.ru",
     address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",
     rating: "4.8 на Яндексе",
     search: "Поиск",
@@ -247,7 +247,7 @@ export default function Teachers() {
   return (
     <div className="flex min-h-screen flex-col">
       <Head>
-                <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(m,e,t,r,i,k,a){
@@ -269,100 +269,136 @@ export default function Teachers() {
           }}
         />
       </Head>
-      <main>
-        {/* Hero Section */}
-        <section className="bg-gray-50 py-12 pt-[90px]">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-6 flex items-center gap-2 text-sm text-gray-500">
-                <Link href="/" className="hover:text-primary">
-                  {t.teachers.breadcrumbs.home}
-                </Link>
-                <ChevronRight className="h-4 w-4" />
-                <span>{t.teachers.breadcrumbs.teachers}</span>
+
+      <main className="bg-white">
+        {/* Hero */}
+        <section className="bg-white pt-[90px] pb-16">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-10 shadow-lg">
+              <div className="flex flex-col gap-6">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="text-sm text-gray-500">
+                    <Link href="/" className="hover:text-primary">
+                      {t.teachers.breadcrumbs.home}
+                    </Link>
+                    <ChevronRight className="inline-block h-4 w-4" />
+                    <span>{t.teachers.breadcrumbs.teachers}</span>
+                  </div>
+
+                  <Link
+                    href="/bookings"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary/90"
+                  >
+                    {t.teachers.cta}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <h1 className="text-center text-5xl font-bold leading-tight text-primary">
+                  {t.teachers.title}
+                </h1>
+
+                <p className="text-center text-lg text-gray-600">
+                  {t.teachers.subtitle}
+                </p>
+
+                <div className="mt-2 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-semibold text-gray-500">Контакты</p>
+                    <p className="mt-2 text-sm text-gray-700">{t.phone}</p>
+                    <p className="text-sm text-gray-700">{t.email}</p>
+                  </div>
+                  <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                    <p className="text-xs font-semibold text-gray-500">Адрес</p>
+                    <p className="mt-2 text-sm text-gray-700">{t.address}</p>
+                  </div>
+                </div>
               </div>
-              <h1 className="mb-4 text-4xl font-bold text-primary">{t.teachers.title}</h1>
-              <p className="mx-auto max-w-2xl text-lg text-gray-600">{t.teachers.subtitle}</p>
             </div>
           </div>
         </section>
 
-        {/* Teachers List Section */}
-              <section id="teachers-list" className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {t.teachersList.map((teacher, index) => (
-              <div
-                key={index}
-                className="overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg"
-              >
-                {/* Teacher Image - Updated with larger height */}
-                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-lg">
-        {teacher.media[0].type === "image" && (
-          <Image
-            src={teacher.media[0].src}
-            alt={`${teacher.name}, Professional Teacher`}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 30vw"
-            priority={index < 3}
-          />
-        )}
-      </div>
+        {/* Teachers Grid */}
+        <section className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+              {t.teachersList.map((teacher, index) => (
+                <div
+                  key={index}
+                  className="group overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="relative aspect-[3/4] w-full overflow-hidden">
+                    {teacher.media[0].type === "image" && (
+                      <Image
+                        src={teacher.media[0].src}
+                        alt={`${teacher.name}, Professional Teacher`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={index < 3}
+                      />
+                    )}
+                  </div>
 
-                <div className="p-6">
-                  <h3 className="mb-2 text-xl font-bold">{teacher.name}</h3>
-                  <p className="mb-4 text-sm font-medium text-primary">{teacher.position}</p>
-                  <p className="mb-4 text-sm font-medium text-primary">{teacher.experience}</p>
-                  <div className="mb-4 space-y-2 text-sm text-gray-600">
-                    <p>{teacher.education}</p>
-                    <p>{teacher.alma}</p>
-                  </div>
-                  <div className="mb-3">
-                    <p className="mb-1 text-xs font-semibold uppercase text-gray-500">
-                      Сертификаты:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {teacher.certifications.map((cert, i) => (
-                        <span
-                          key={i}
-                          className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
-                        >
-                          {cert}
-                        </span>
-                      ))}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900">{teacher.name}</h3>
+                    <p className="mt-2 text-sm font-medium text-primary">{teacher.position}</p>
+                    <p className="mt-1 text-sm font-medium text-gray-700">{teacher.experience}</p>
+
+                    <div className="mt-4 space-y-2 text-sm text-gray-600">
+                      <p>{teacher.education}</p>
+                      <p>{teacher.alma}</p>
                     </div>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-semibold uppercase text-gray-500">
-                      Языки:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {teacher.languages.map((lang, i) => (
-                        <span key={i} className="text-xs text-gray-600">
-                          {lang}
-                        </span>
-                      ))}
+
+                    <div className="mt-5">
+                      <p className="text-xs font-semibold uppercase text-gray-500">
+                        Сертификаты:
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {teacher.certifications.map((cert, i) => (
+                          <span
+                            key={i}
+                            className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                          >
+                            {cert}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      <p className="text-xs font-semibold uppercase text-gray-500">
+                        Языки:
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {teacher.languages.map((lang, i) => (
+                          <span key={i} className="text-xs text-gray-600">
+                            {lang}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-        {/* Qualifications Section */}
-        <section id="qualifications" className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="mb-6 text-3xl font-bold text-primary">{t.qualifications.title}</h2>
-              <p className="mb-8 text-lg text-gray-600">{t.qualifications.description}</p>
-              <ul className="space-y-4 text-left">
+        {/* Qualifications */}
+        <section className="bg-gray-50 py-16">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-4xl rounded-[2rem] bg-white p-10 shadow-lg">
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-primary">{t.qualifications.title}</h2>
+                <p className="mt-4 text-lg text-gray-600">{t.qualifications.description}</p>
+              </div>
+
+              <ul className="mt-10 grid gap-4 text-left sm:grid-cols-2">
                 {t.qualifications.items.map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <ChevronRight className="mr-2 h-5 w-5 flex-shrink-0 text-primary" />
-                    <span>{item}</span>
+                  <li key={index} className="flex items-start gap-3 rounded-xl border border-gray-100 bg-gray-50 p-5">
+                    <ChevronRight className="mt-1 h-5 w-5 text-primary" />
+                    <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -370,18 +406,21 @@ export default function Teachers() {
           </div>
         </section>
 
-        {/* Methodology Section */}
-        <section id="methodology" className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="mb-6 text-center text-3xl font-bold text-primary">{t.methodology.title}</h2>
-            <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-gray-600">{t.methodology.description}</p>
-            <div className="grid gap-8 md:grid-cols-3">
+        {/* Methodology */}
+        <section className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-primary">{t.methodology.title}</h2>
+              <p className="mt-4 text-lg text-gray-600">{t.methodology.description}</p>
+            </div>
+
+            <div className="mt-10 grid gap-8 md:grid-cols-3">
               {t.methodology.items.map((item, index) => (
-                <div key={index} className="rounded-lg bg-white p-8 shadow-md transition-all hover:shadow-lg">
+                <div key={index} className="rounded-[1.5rem] border border-gray-100 bg-white p-8 shadow-sm transition hover:shadow-lg">
                   <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <span className="text-2xl font-bold">{index + 1}</span>
                   </div>
-                  <h3 className="mb-4 text-xl font-bold">{item.title}</h3>
+                  <h3 className="mb-4 text-xl font-bold text-gray-900">{item.title}</h3>
                   <p className="text-gray-600">{item.description}</p>
                 </div>
               ))}
@@ -389,27 +428,31 @@ export default function Teachers() {
           </div>
         </section>
 
-        {/* Join Our Team Section */}
-        <section id="join-team" className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl rounded-lg bg-white p-8 shadow-lg">
-              <h2 className="mb-6 text-center text-3xl font-bold text-primary">{t.joinTeam.title}</h2>
-              <p className="mb-8 text-center text-lg text-gray-600">{t.joinTeam.description}</p>
-              <div className="mb-8">
-                <h3 className="mb-4 text-xl font-semibold">Требования к кандидатам:</h3>
-                <ul className="space-y-3">
+        {/* Join Team */}
+        <section className="bg-gray-50 py-16">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-4xl rounded-[2rem] bg-white p-10 shadow-lg">
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-primary">{t.joinTeam.title}</h2>
+                <p className="mt-4 text-lg text-gray-600">{t.joinTeam.description}</p>
+              </div>
+
+              <div className="mt-10">
+                <h3 className="text-xl font-semibold text-gray-900">Требования к кандидатам:</h3>
+                <ul className="mt-5 space-y-3">
                   {t.joinTeam.requirements.map((req, index) => (
-                    <li key={index} className="flex items-start">
-                      <ChevronRight className="mr-2 h-5 w-5 flex-shrink-0 text-primary" />
-                      <span>{req}</span>
+                    <li key={index} className="flex items-start gap-3">
+                      <ChevronRight className="mt-1 h-5 w-5 text-primary" />
+                      <span className="text-gray-700">{req}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="text-center">
+
+              <div className="mt-8 text-center">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-medium text-white transition-all hover:bg-primary/90"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-white font-semibold transition hover:bg-primary/90"
                 >
                   {t.joinTeam.cta}
                   <ArrowRight className="h-4 w-4" />
@@ -419,80 +462,79 @@ export default function Teachers() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section id="cta" className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="overflow-hidden rounded-xl bg-primary shadow-xl">
-              <div className="relative">
-                <div className="relative px-8 py-16 text-center text-white md:px-12 lg:px-16">
-                  <h2 className="mb-4 text-3xl font-bold md:text-4xl">{t.trial.title}</h2>
-                  <Link
-                    href="/bookings"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 font-medium text-primary transition-all hover:bg-gray-100 hover:gap-3"
-                  >
-                    {t.trial.cta}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
+        {/* CTA */}
+        <section className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="rounded-[2rem] bg-primary p-10 text-center text-white shadow-xl">
+              <h2 className="text-3xl font-bold">{t.trial.title}</h2>
+              <p className="mt-4 text-lg">{t.trial.description}</p>
+
+              <Link
+                href="/bookings"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 text-primary font-semibold transition hover:bg-gray-100"
+              >
+                {t.trial.cta}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
-                <noscript>
-        <div>
-          <img 
-            src="https://mc.yandex.ru/watch/103804746" 
-            style={{position: "absolute", left: "-9999px"}} 
-            alt="" 
-          />
-        </div>
-      </noscript>
+          <noscript>
+            <div>
+              <img
+                src="https://mc.yandex.ru/watch/103804746"
+                style={{ position: "absolute", left: "-9999px" }}
+                alt=""
+              />
+            </div>
+          </noscript>
         </section>
       </main>
+
       <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Наши преподаватели - Tut School",
-      "description": "Познакомьтесь с нашей командой профессиональных педагогов",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://tutschool.ru/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Преподаватели",
-            "item": "https://tutschool.ru/teachers"
-          }
-        ]
-      },
-      "mainEntity": t.teachersList.map(teacher => ({
-        "@type": "Person",
-        "name": teacher.name,
-        "jobTitle": teacher.position,
-        "alumniOf": teacher.alma,
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": teacher.position,
-          "experienceRequirements": teacher.experience
-        },
-        "description": teacher.description,
-        "knowsLanguage": teacher.languages,
-        "hasCredential": teacher.certifications.map(cert => ({
-          "@type": "EducationalOccupationalCredential",
-          "name": cert
-        }))
-      }))
-    })
-  }}
-/>
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Наши преподаватели - Tut School",
+            "description": "Познакомьтесь с нашей командой профессиональных педагогов",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Главная",
+                  "item": "https://tutschool.ru/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Преподаватели",
+                  "item": "https://tutschool.ru/teachers"
+                }
+              ]
+            },
+            "mainEntity": t.teachersList.map(teacher => ({
+              "@type": "Person",
+              "name": teacher.name,
+              "jobTitle": teacher.position,
+              "alumniOf": teacher.alma,
+              "hasOccupation": {
+                "@type": "Occupation",
+                "name": teacher.position,
+                "experienceRequirements": teacher.experience
+              },
+              "description": teacher.description,
+              "knowsLanguage": teacher.languages,
+              "hasCredential": teacher.certifications.map(cert => ({
+                "@type": "EducationalOccupationalCredential",
+                "name": cert
+              }))
+            }))
+          })
+        }}
+      />
     </div>
   )
 }

@@ -150,28 +150,6 @@ export default function Teachers() {
         ],
       },
       {
-        name: " Анастасия",
-        position: "Преподаватель китайского языка ",
-        education: "Пекинский университет языка и культуры (2024 год)",
-        experience: "МГУ им. Ломоносова, Институт стран Азии и Африки (2021-2025)",
-        description:
-          "Дмитрий работает со взрослыми студентами и подростками, готовит к международным экзаменам IELTS и TOEFL. Имеет опыт работы в языковых школах Великобритании.",
-        certifications: ["HSK5" ],
-        languages: ["Китайский (C2)"],
-        media: [
-          {
-            type: "image",
-            src: "/assets/teachers/Воробьева-Анастасия.jpg",
-            alt: "Воробьева-Анастасия",
-          },
-          {
-            type: "certificate",
-            src: "/teachers/dmitry-ivanov-delta.jpg",
-            alt: "Language Instructor",
-          },
-        ],
-      },
-      {
         name: "Лаки",
         position: "Преподаватель английского языка",
         education: "Московский Авиационный Институт",
@@ -293,7 +271,7 @@ export default function Teachers() {
       </Head>
       <main>
         {/* Hero Section */}
-        <section className="bg-gray-50 py-12">
+        <section className="bg-gray-50 py-12 pt-[90px]">
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center text-center">
               <div className="mb-6 flex items-center gap-2 text-sm text-gray-500">

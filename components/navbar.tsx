@@ -52,18 +52,18 @@ function AnimatedText({ text, className = "" }: { text: string; className?: stri
 function TopBar({ t }: { t: any }) {
   return (
     <div className="bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-100">
-      <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-2.5">
+      <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-2">
         <div className="flex flex-wrap items-center gap-6">
           <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Clock className="h-3.5 w-3.5 text-primary" />
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+              <Clock className="h-3 w-3 text-primary" />
             </div>
             <AnimatedText text={t.workingHours} className="text-xs text-gray-600 font-medium" />
           </div>
 
           <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Phone className="h-3.5 w-3.5 text-primary" />
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+              <Phone className="h-3 w-3 text-primary" />
             </div>
             <a
               href={`tel:${t.phone.replace(/\s+/g, "")}`}
@@ -74,8 +74,8 @@ function TopBar({ t }: { t: any }) {
           </div>
 
           <div className="hidden lg:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Mail className="h-3.5 w-3.5 text-primary" />
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+              <Mail className="h-3 w-3 text-primary" />
             </div>
             <a href={`mailto:${t.email}`} className="text-xs font-medium text-gray-600 transition-colors hover:text-primary">
               {t.email}
@@ -83,8 +83,8 @@ function TopBar({ t }: { t: any }) {
           </div>
 
           <div className="hidden xl:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Landmark className="h-3.5 w-3.5 text-primary" />
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+              <Landmark className="h-3 w-3 text-primary" />
             </div>
             <AnimatedText text={t.address} className="text-xs text-gray-600 font-medium max-w-[300px] truncate" />
           </div>
@@ -283,20 +283,17 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Topbar Above Header */}
-      <TopBar t={t} />
-
-      {/* Header */}
+      {/* Fixed Header containing TopBar + Navbar */}
       <header
         className={`fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md transition-all duration-500 ${
           isScrolled ? "shadow-lg shadow-black/5 border-b border-gray-100" : "border-b border-transparent"
         }`}
       >
-        {/* Same Topbar Inside Header */}
+        {/* TopBar */}
         <TopBar t={t} />
 
         {/* Header content */}
-        <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <div className="container mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="flex items-center gap-4">
             <Link href="/" className="group relative flex items-center gap-4">
@@ -304,8 +301,8 @@ export default function Navbar() {
                 <Image
                   src="/logo.png"
                   alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
-                  width={120}
-                  height={120}
+                  width={36}
+                  height={36}
                   className="object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -327,7 +324,7 @@ export default function Navbar() {
               <li className="relative">
                 <button
                   onClick={() => toggleDropdown("about")}
-                  className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
+                  className={`group flex items-center gap-1 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
                     activeDropdown === "about" ? "bg-primary/10 text-primary" : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
@@ -358,7 +355,7 @@ export default function Navbar() {
               <li className="relative">
                 <button
                   onClick={() => toggleDropdown("courses")}
-                  className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
+                  className={`group flex items-center gap-1 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
                     activeDropdown === "courses" ? "bg-primary/10 text-primary" : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
@@ -389,7 +386,7 @@ export default function Navbar() {
               <li className="relative">
                 <button
                   onClick={() => toggleDropdown("club")}
-                  className={`group flex items-center gap-1 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ${
+                  className={`group flex items-center gap-1 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
                     activeDropdown === "club" ? "bg-primary/10 text-primary" : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
@@ -420,7 +417,7 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/news"
-                  className="flex items-center rounded-full px-4 py-2 text-xs font-semibold tracking-wide text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-gray-900"
+                  className="flex items-center rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-gray-900"
                 >
                   <AnimatedText text={t.nav.news} />
                 </Link>
@@ -430,7 +427,7 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/contact"
-                  className="flex items-center rounded-full px-4 py-2 text-xs font-semibold tracking-wide text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-gray-900"
+                  className="flex items-center rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-gray-900"
                 >
                   <AnimatedText text={t.nav.contacts} />
                 </Link>
@@ -441,7 +438,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4 lg:hidden">
             <button
-              className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-gray-200 hover:shadow-md"
+              className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-gray-200 hover:shadow-md"
               onClick={toggleMobileMenu}
             >
               <span className="sr-only">Toggle menu</span>
@@ -568,7 +565,6 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-
 
             {/* News Link */}
             <Link

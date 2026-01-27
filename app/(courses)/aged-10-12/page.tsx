@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import Head from "next/head"
 import Link from "next/link"
 import { useScroll } from "framer-motion"
 
@@ -63,11 +62,8 @@ export default function Aged10to12Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
 
-
-    // Replace with either:
-const { scrollY } = useScroll() // Framer Motion hook
+  const { scrollY } = useScroll()
 
   // Refs
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -152,7 +148,6 @@ const { scrollY } = useScroll() // Framer Motion hook
       schedule: [
         { day: "Пн-Пт:", times: ["9:00 - 21:00"] },
         { day: "Сб:", times: ["10:00 - 18:00"] },
-        
       ],
       languageToggle: "English",
     },
@@ -215,10 +210,10 @@ const { scrollY } = useScroll() // Framer Motion hook
       ],
       activities: [
         { title: "Pair and group work", description: "Developing dialogic speech, argumentation, and critical thinking", image: "/assets/children/group-work.jpg" },
-        { title: "Project work", description: "Creating presentations and research projects in English", image: "assets/children/project-work.jpg" },
-        { title: "Broadening horizons", description: " content expanding general knowledge and culture of English-speaking countries", image: "assets/children/TutSchool.jpg" },
+        { title: "Project work", description: "Creating presentations and research projects in English", image: "/assets/children/project-work.jpg" },
+        { title: "Broadening horizons", description: " content expanding general knowledge and culture of English-speaking countries", image: "/assets/children/TutSchool.jpg" },
       ],
-        pricing: {
+      pricing: {
         title: "Pricing Plans",
         items: [
           {
@@ -242,15 +237,11 @@ const { scrollY } = useScroll() // Framer Motion hook
   const t = translations[language]
 
   // Effects
- useEffect(() => {
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 100)
-  }
-  
-  // Add passive listener
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  return () => window.removeEventListener('scroll', handleScroll)
-}, [])
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 80)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -267,60 +258,34 @@ const { scrollY } = useScroll() // Framer Motion hook
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen)
   const toggleDropdown = (dropdown: string) => setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
 
-    const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
   // Components
   const TopBar = () => (
-    <div className="bg-gray-100 py-2 text-sm">
-      <div className="container mx-auto flex flex-wrap items-center justify-between px-4">
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="flex items-center gap-2">
+    <div className="bg-white/60 backdrop-blur-md border-b border-gray-200">
+      <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-2 text-sm">
+        <div className="flex items-center gap-6 flex-wrap">
+          <div className="flex items-center gap-2 text-gray-600">
             <Clock className="h-4 w-4 text-primary" />
-            <span className="text-gray-600">{t.workingHours}</span>
+            {t.workingHours}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-gray-600">
             <Phone className="h-4 w-4 text-primary" />
-            <a href={`tel:${t.phone.replace(/\s+/g, "")}`} className="text-gray-600 hover:text-primary">
+            <a href={`tel:${t.phone.replace(/\s+/g, "")}`} className="hover:text-primary transition-colors">
               {t.phone}
             </a>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-gray-600">
             <Landmark className="h-4 w-4 text-primary" />
-            <span className="text-gray-600">{t.address}</span>
-          </div>
-          <div className="hidden items-center gap-2 md:flex">
-            <Mail className="h-4 w-4 text-primary" />
-            <a href={`mailto:${t.email}`} className="text-gray-600 hover:text-primary">
-              {t.email}
-            </a>
+            {t.address}
           </div>
         </div>
+
         <div className="flex items-center gap-3">
           {SOCIAL_LINKS.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              aria-label={link.name}
-              className={`${link.color} transition-colors`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a key={index} href={link.href} aria-label={link.name} className={`${link.color} transition-colors`} target="_blank" rel="noopener noreferrer">
               {link.icon}
             </a>
           ))}
-          <button
-            onClick={toggleLanguage}
-            className="ml-2 flex items-center gap-1 rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-200 transition-colors"
-            aria-label={`Switch to ${t.languageToggle}`}
-          >
+          <button onClick={toggleLanguage} className="ml-2 flex items-center gap-1 rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-100 transition-colors">
             <Globe className="h-3 w-3" />
             {t.languageToggle}
           </button>
@@ -329,111 +294,77 @@ const { scrollY } = useScroll() // Framer Motion hook
     </div>
   )
 
-  const DesktopNavItem = ({ label, dropdownItems }: { label: string; dropdownItems?: DropdownItem[] }) => {
-    const slug = label.toLowerCase().replace(/\s+/g, '-')
-    return (
-      <li className="relative">
-        {dropdownItems ? (
-          <>
-            <button
-              onClick={() => toggleDropdown(slug)}
-              className={`flex items-center text-sm font-medium ${
-                activeDropdown === slug ? "text-primary" : "text-gray-700 hover:text-primary"
-              }`}
-              aria-expanded={activeDropdown === slug}
-              aria-haspopup="true"
-            >
-              {label}
-              <ChevronDown
-                className={`ml-1 h-4 w-4 transition-transform ${
-                  activeDropdown === slug ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            {activeDropdown === slug && (
-              <div className="absolute left-0 top-full z-10 mt-1 w-48 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
-                {dropdownItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </>
-        ) : (
-          <Link href={`/${slug}`} className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-            {label}
-          </Link>
-        )}
-      </li>
-    )
-  }
-
-  const MobileNavItem = ({
-    label,
-    icon: Icon,
-    dropdownItems
-  }: {
-    label: string
-    icon: React.ComponentType<{ className?: string }>
-    dropdownItems?: DropdownItem[]
-  }) => {
-    const slug = `${label.toLowerCase().replace(/\s+/g, '-')}-mobile`
-    return (
-      <div className="rounded-lg border border-gray-200">
-        <button
-          onClick={() => toggleDropdown(slug)}
-          className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-700"
-          aria-expanded={activeDropdown === slug}
-        >
-          <span className="flex items-center gap-2">
-            <Icon className="h-5 w-5 text-primary" />
-            {label}
-          </span>
-          {activeDropdown === slug ? (
-            <X className="h-5 w-5 transition-transform" />
-          ) : (
-            <ChevronDown className="h-5 w-5 transition-transform" />
-          )}
-        </button>
-        {dropdownItems && (
-          <div
-            className={`overflow-hidden transition-all duration-300 ease-in-out ${
-              activeDropdown === slug ? "max-h-96" : "max-h-0"
-            }`}
-          >
-            <div className="space-y-2 px-4 pb-4">
-              {dropdownItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block rounded-md p-3 text-gray-600 hover:bg-gray-50 transition-colors"
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </div>
+  const Header = () => (
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-lg" : "bg-white/70 backdrop-blur-md"}`}>
+      <TopBar />
+      <div className="container mx-auto flex items-center justify-between gap-6 px-4 py-4">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="rounded-full bg-primary/10 border border-primary p-2">
+            <BookOpen className="h-5 w-5 text-primary" />
           </div>
-        )}
-      </div>
-    )
-  }
+          <div className="leading-tight">
+            <div className="font-bold text-lg text-gray-900">{t.schoolName}</div>
+            <div className="text-xs text-gray-500">{t.schoolSubtitle}</div>
+          </div>
+        </Link>
 
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-700">
+          <Link href="/about" className="hover:text-primary transition-colors">
+            {t.nav.about}
+          </Link>
+          <Link href="/courses" className="hover:text-primary transition-colors">
+            {t.nav.courses}
+          </Link>
+          <Link href="/chinese" className="hover:text-primary transition-colors">
+            {t.nav.chinese}
+          </Link>
+          <Link href="/contacts" className="hover:text-primary transition-colors">
+            {t.nav.contacts}
+          </Link>
+        </nav>
+
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="/bookings" className="rounded-lg bg-primary px-5 py-2 text-white font-semibold shadow-md hover:bg-primary/90 transition-colors">
+            {t.hero.cta}
+          </a>
+        </div>
+
+        <button className="lg:hidden" onClick={toggleMobileMenu}>
+          {mobileMenuOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-gray-200">
+          <div className="space-y-1 px-4 pb-4">
+            <Link href="/about" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
+              {t.nav.about}
+            </Link>
+            <Link href="/courses" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
+              {t.nav.courses}
+            </Link>
+            <Link href="/chinese" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
+              {t.nav.chinese}
+            </Link>
+            <Link href="/contacts" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
+              {t.nav.contacts}
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  )
 
   const HeroSection = () => (
-    <section className="relative bg-primary py-20 text-white">
+    <section className="relative bg-primary py-24 text-white">
       <div className="container mx-auto px-4">
-        <div
-          
-          className="text-center"
-        >
+        <div className="text-center max-w-3xl mx-auto">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
           <p className="mx-auto max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
+          <a href="/bookings" className="mt-8 inline-block rounded-lg bg-white text-primary px-10 py-3 font-semibold shadow-lg hover:bg-gray-100 transition-colors">
+            {t.hero.cta}
+          </a>
         </div>
       </div>
       <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
@@ -448,10 +379,7 @@ const { scrollY } = useScroll() // Framer Motion hook
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {t.benefits.map((benefit: Benefit, index) => (
-            <div
-              
-              className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-primary"
-            >
+            <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-primary">
               <h3 className="text-xl font-semibold mb-3 text-primary">{benefit.title}</h3>
               <p className="text-gray-600">{benefit.description}</p>
             </div>
@@ -469,9 +397,7 @@ const { scrollY } = useScroll() // Framer Motion hook
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {t.activities.map((activity: Activity, index) => (
-            <div
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
-            >
+            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
               <div className="relative h-72 overflow-hidden">
                 <Image
                   src={activity.image}
@@ -501,9 +427,7 @@ const { scrollY } = useScroll() // Framer Motion hook
         </h2>
         <div className="max-w-md mx-auto">
           {t.schedule.map((item: ScheduleItem, index) => (
-            <div
-              className="flex justify-between items-center py-4 border-b last:border-b-0"
-            >
+            <div className="flex justify-between items-center py-4 border-b last:border-b-0">
               <div className="flex items-center">
                 <Calendar className="w-5 h-5 text-primary mr-2" />
                 <span className="font-medium">{item.day}</span>
@@ -525,19 +449,10 @@ const { scrollY } = useScroll() // Framer Motion hook
         <h2 className="mb-12 text-center text-3xl font-bold">
           {t.pricing.title}
         </h2>
-  
-        <div
-          className="
-            grid gap-8 md:grid-cols-3 
-            mx-auto md:ml-[20%] md:mr-auto 
-            w-full max-w-[85%]
-          "
-        >
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-auto w-full max-w-[85%]">
           {t.pricing.items.map((item, index) => (
-            <div
-              key={index}
-              className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-[#5C162E]"
-            >
+            <div key={index} className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-[#5C162E]">
               <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
               <p className="text-3xl font-bold text-primary">{item.price}</p>
             </div>
@@ -546,7 +461,6 @@ const { scrollY } = useScroll() // Framer Motion hook
       </div>
     </section>
   )
-  
 
   const CTASection = () => (
     <section className="py-16 bg-primary text-white">
@@ -563,17 +477,15 @@ const { scrollY } = useScroll() // Framer Motion hook
 
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="bg-gray-100 py-2 text-sm">
-      </div>
-     
-        <main className="flex-1">
-          <HeroSection />
-          <BenefitsSection />
-          <ActivitiesSection />
-          <ScheduleSection />
-          <PricingSection />
-          <CTASection />
-        </main>
+      <Header />
+      <main className="flex-1">
+        <HeroSection />
+        <BenefitsSection />
+        <ActivitiesSection />
+        <ScheduleSection />
+        <PricingSection />
+        <CTASection />
+      </main>
     </div>
   )
 }

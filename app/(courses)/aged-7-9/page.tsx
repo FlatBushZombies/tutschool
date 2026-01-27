@@ -209,27 +209,27 @@ export default function Aged7to9Page() {
     },
   }
 
-    const activities = [
+  const activities = [
     { 
       title: language === 'ru' ? 'Твердая лексическая и грамматическая база ' : 'Reading & Storytelling',
       description: language === 'ru' 
         ? 'Структурированный курс с презентацией лексики и грамматики и их последующей отработкой' 
         : 'Working with adapted texts and oral storytelling',
-      image: "/assets/children/reading.jpg" // Kids reading together
+      image: "/assets/children/reading.jpg"
     },
     { 
       title: language === 'ru' ? 'Развитие языковых навыков' : 'Grammar Games',
       description: language === 'ru' 
         ? 'Уроки по развитию навыков чтения, письма, говорения, понимания речи на слух' 
         : 'Learning grammar through interactive exercises',
-      image: "/assets/children/grammar-games.jpg" // Kids playing educational game
+      image: "/assets/children/grammar-games.jpg"
     },
     { 
       title: language === 'ru' ? 'Знакомство с традициями и культурой англоязычных стран' : 'Creative Projects',
       description: language === 'ru' 
         ? 'Страноведение на уроках и внеклассных мероприятиях' 
         : 'Drawing, crafts and drama in English',
-      image: "/assets/children/creative-projects.jpg" // Kids doing arts and crafts
+      image: "/assets/children/creative-projects.jpg"
     }
   ]
 
@@ -252,25 +252,47 @@ export default function Aged7to9Page() {
       }
     }
   }
+
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col pt-[96px] bg-gradient-to-b from-white via-white to-gray-50">
       <FadeIn>
-     
 
         {/* Hero Section */}
-        <section className="relative bg-primary py-20 text-white">
-          <div className="container mx-auto px-4">
+        <section className="relative bg-gradient-to-b from-[#5C162E] to-[#3B0F1F] py-24 text-white overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_60%)]" />
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
               variants={fadeIn}
-              className="text-center"
+              className="text-center max-w-3xl mx-auto"
             >
-              <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
-              <p className="mx-auto max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
+              <h1 className="mb-4 text-4xl font-bold md:text-5xl tracking-tight">
+                {t.hero.title}
+              </h1>
+              <p className="mx-auto max-w-2xl text-lg text-white/80">
+                {t.hero.subtitle}
+              </p>
+              <div className="mt-8 flex justify-center gap-4">
+                <a
+                  href="/bookings"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-[#5C162E] font-semibold shadow-lg hover:shadow-xl transition"
+                >
+                  {t.hero.cta}
+                </a>
+                <button
+                  onClick={toggleLanguage}
+                  className="inline-flex items-center justify-center rounded-xl border border-white/30 px-6 py-3 text-white font-medium hover:bg-white/10 transition"
+                >
+                  {t.languageToggle}
+                </button>
+              </div>
             </motion.div>
           </div>
-          <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
+          <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#5C162E]/30 to-transparent" />
         </section>
 
         {/* Benefits Section */}
@@ -281,115 +303,136 @@ export default function Aged7to9Page() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {t.benefits.map((benefit, index) => (
-                <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-[#5C162E]">
-                  <h3 className="text-xl font-semibold mb-3 text-[#5C162E]">{benefit.title}</h3>
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.1 } }
+                  }}
+                  className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-1 hover:shadow-2xl transition"
+                >
+                  <h3 className="text-xl font-semibold mb-3 text-[#5C162E]">
+                    {benefit.title}
+                  </h3>
                   <p className="text-gray-600">{benefit.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-       {/* Activities Section */}
-  <section className="py-16 bg-gray-50">
-    <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
-        {language === 'ru' ? 'Наши занятия' : 'Our Activities'}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {activities.map((activity, index) => (
-          <motion.div 
-            key={index}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.1 } }
-            }}
-            className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full"
-          >
-            <div className="relative h-96 w-full overflow-hidden">
-              <Image
-                src={activity.image}
-                alt={activity.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={index === 0} // Only prioritize first image
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#5C162E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Activities Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
+              {language === 'ru' ? 'Наши занятия' : 'Our Activities'}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {activities.map((activity, index) => (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.1 } }
+                  }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition group flex flex-col h-full"
+                >
+                  <div className="relative h-96 w-full overflow-hidden">
+                    <Image
+                      src={activity.image}
+                      alt={activity.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#5C162E]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="p-6 flex-grow flex flex-col">
+                    <h3 className="text-xl font-semibold mb-3 text-[#5C162E]">
+                      {activity.title}
+                    </h3>
+                    <p className="text-gray-600 flex-grow">
+                      {activity.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="p-6 flex-grow flex flex-col">
-            <h3 className="text-xl font-semibold mb-3 text-[#5C162E]">{activity.title}</h3>
-            <p className="text-gray-600 flex-grow">{activity.description}</p>
           </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
+        </section>
 
-{/* Schedule Section */}
-<section className="py-16 bg-white justify-center ">
-  <div className="container mx-auto ">
-    <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
-      {language === 'ru' ? 'Расписание занятий' : 'Class Schedule'}
-    </h2>
+        {/* Schedule Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
+              {language === 'ru' ? 'Расписание занятий' : 'Class Schedule'}
+            </h2>
 
-    {/* Cards container */}
-    <div className="flex flex-wrap justify-start gap-6">
-      {t.schedule.map((item, index) => (
-        <div
-          key={index}
-          className="w-full max-w-md rounded-lg border p-6 shadow-sm"
-        >
-          <div className="flex items-center mb-4">
-            <Calendar className="w-5 h-5 text-[#5C162E] mr-2" />
-            <span className="font-medium">{item.day}</span>
+            <div className="flex flex-wrap justify-center gap-6">
+              {t.schedule.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.1 } }
+                  }}
+                  className="w-full max-w-md rounded-2xl border border-gray-100 p-6 shadow-lg"
+                >
+                  <div className="flex items-center mb-4">
+                    <Calendar className="w-5 h-5 text-[#5C162E] mr-2" />
+                    <span className="font-medium">{item.day}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <Clock className="w-5 h-5 text-[#5C162E] mr-2" />
+                    <span>{item.times[0]}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-          <div className="flex items-center text-gray-600">
-            <Clock className="w-5 h-5 text-[#5C162E] mr-2" />
-            <span>{item.times[0]}</span>
+        </section>
+
+        {/* Pricing */}
+        <section className="bg-gray-50 py-16">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              initial="hidden"
+              animate={isLoaded ? "visible" : "hidden"}
+              variants={fadeIn}
+              className="mb-12 text-center text-3xl font-bold text-[#5C162E]"
+            >
+              {t.pricing.title}
+            </motion.h2>
+
+            <motion.div
+              initial="hidden"
+              animate={isLoaded ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
+            >
+              {t.pricing.items.map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  className="rounded-2xl bg-white p-8 text-center shadow-2xl transition-all hover:-translate-y-1 hover:shadow-3xl border border-gray-100 w-full max-w-sm"
+                >
+                  <h3 className="mb-4 text-xl font-bold text-[#5C162E]">{item.type}</h3>
+                  <p className="text-3xl font-bold text-[#5C162E]">{item.price}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* Pricing */}
-<section className="bg-gray-50 py-16">
-  <div className="container mx-auto px-4">
-    <motion.h2
-      initial="hidden"
-      animate={isLoaded ? "visible" : "hidden"}
-      variants={fadeIn}
-      className="mb-12 text-center text-3xl font-bold"
-    >
-      {t.pricing.title}
-    </motion.h2>
-
-    <motion.div
-      initial="hidden"
-      animate={isLoaded ? "visible" : "hidden"}
-      variants={staggerContainer}
-      className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
-    >
-      {t.pricing.items.map((item, index) => (
-        <motion.div
-          key={index}
-          variants={fadeIn}
-          className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-[#5C162E] w-full max-w-sm"
-        >
-          <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
-          <p className="text-3xl font-bold text-primary">{item.price}</p>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
-
+        </section>
 
         {/* CTA Section */}
         <section className="py-16 bg-[#5C162E] text-white">

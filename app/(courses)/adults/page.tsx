@@ -25,69 +25,39 @@ import { ScrollProgress, ScrollSpy } from "@/components/animations/scroll-animat
 
 export default function AdultsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
-    const [language, setLanguage] = useState<"ru" | "en">("ru")
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-    const [currentImageIndex, setCurrentImageIndex] = useState(0)
-    const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-    const [hoveredCourse, setHoveredCourse] = useState<number | null>(null)
-    const [sliderDirection, setSliderDirection] = useState<"next" | "prev" | null>(null)
-    const [activeSection, setActiveSection] = useState<string>("hero")
-    const [isScrolled, setIsScrolled] = useState(false)
+  const [language, setLanguage] = useState<"ru" | "en">("ru")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [hoveredCourse, setHoveredCourse] = useState<number | null>(null)
+  const [sliderDirection, setSliderDirection] = useState<"next" | "prev" | null>(null)
+  const [activeSection, setActiveSection] = useState<string>("hero")
+  const [isScrolled, setIsScrolled] = useState(false)
 
-    const dropdownRef = useRef<HTMLDivElement>(null)
-    
-    const [scrollY, setScrollY] = useState(0)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
-    
-      useEffect(() => {
-        // Set loaded state after a small delay to trigger initial animations
-        const timer = setTimeout(() => {
-          setIsLoaded(true)
-        }, 100)
-    
-        // Handle scroll events for scroll-triggered animations
-        const handleScroll = () => {
-          setScrollY(window.scrollY)
-        }
-    
-        window.addEventListener("scroll", handleScroll)
-    
-        return () => {
-          clearTimeout(timer)
-          window.removeEventListener("scroll", handleScroll)
-        }
-      }, [])
-    
-      useEffect(() => {
-        const handleScroll = () => {
-          setScrollY(window.scrollY)
-          setIsScrolled(window.scrollY > 100)
-        }
-    
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-      }, [])
-    
-      useEffect(() => {
-        // Set loaded state after a small delay to trigger initial animations
-        const timer = setTimeout(() => {
-          setIsLoaded(true)
-        }, 100)
-    
-        // Handle scroll events for scroll-triggered animations
-        const handleScroll = () => {
-          setScrollY(window.scrollY)
-        }
-    
-        window.addEventListener("scroll", handleScroll)
-    
-        return () => {
-          clearTimeout(timer)
-          window.removeEventListener("scroll", handleScroll)
-        }
-      }, [])
-    
+  const [scrollY, setScrollY] = useState(0)
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100)
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+      setIsScrolled(window.scrollY > 90)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
 
   const translations = {
     ru: {
@@ -197,7 +167,7 @@ export default function AdultsPage() {
             title: "Сб: ",
             time: "10:00 - 18:00"
           },
-          
+
         ],
         formats: [
           "Мини-группы (4-6 человек)",
@@ -257,9 +227,9 @@ export default function AdultsPage() {
         coursesDropdown: [
           { title: "PRESCHOOLERS", href: "/preschoolers" },
           { title: "CHILDREN AGED 7-9", href: "/aged-7-9" },
-            { title: "CHILDREN AGED 10-12", href: "/aged-10-12" },
+          { title: "CHILDREN AGED 10-12", href: "/aged-10-12" },
           { title: "TEENAGERS", href: "/teenagers" },
-            { title: "ADULTS", href: "/adults" },
+          { title: "ADULTS", href: "/adults" },
         ],
         chinese: "CHINESE LANGUAGE COURSES",
         chineseDropdown: [
@@ -385,7 +355,6 @@ export default function AdultsPage() {
 
   const t = translations[language]
 
-  
   const toggleLanguage = () => {
     setLanguage(language === "ru" ? "en" : "ru")
   }
@@ -418,13 +387,60 @@ export default function AdultsPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-white">
       {/* Top Bar */}
-            <ScrollProgress />
+      <ScrollProgress />
+
+      {/* Premium Header */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"}`}>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between py-5">
+            <Link href="/" className="text-xl font-bold tracking-tight">
+              <span className="text-primary">Tut</span> School
+            </Link>
+
+            <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+              <Link href="/about">{t.nav.about}</Link>
+              <Link href="/courses">{t.nav.courses}</Link>
+              <Link href="/contacts">{t.nav.contacts}</Link>
+            </nav>
+
+            <div className="hidden md:flex items-center gap-4">
+              <button
+                onClick={toggleLanguage}
+                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+              >
+                {t.languageToggle}
+              </button>
+
+              <button onClick={toggleMobileMenu} className="md:hidden p-2 rounded-lg border border-gray-200">
+                {mobileMenuOpen ? <X /> : <Menu />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/40">
+          <div className="absolute top-0 right-0 w-3/4 h-full bg-white p-6">
+            <button onClick={toggleMobileMenu} className="mb-6">
+              <X />
+            </button>
+            <div className="flex flex-col gap-4">
+              <Link href="/about" onClick={toggleMobileMenu}>{t.nav.about}</Link>
+              <Link href="/courses" onClick={toggleMobileMenu}>{t.nav.courses}</Link>
+              <Link href="/contacts" onClick={toggleMobileMenu}>{t.nav.contacts}</Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative bg-primary py-20 text-white">
-          <div className="container mx-auto px-4">
+        <section className="relative bg-primary pt-[180px] pb-20 text-white">
+          <div className="container mx-auto px-6">
             <motion.div
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
@@ -451,11 +467,11 @@ export default function AdultsPage() {
                 <p className="text-lg text-gray-700">{t.description}</p>
               </motion.div>
               <motion.div variants={fadeIn}>
-                <div className="relative overflow-hidden rounded-lg md:h-full">
+                <div className="relative overflow-hidden rounded-xl md:h-full shadow-xl">
                   <Image
                     src="/assets/gallery/adults.jpg"
                     alt="Adult students learning English"
-                    width={735}  
+                    width={735}
                     height={490}
                     className="object-cover"
                   />
@@ -486,7 +502,7 @@ export default function AdultsPage() {
                 <motion.div
                   key={index}
                   variants={fadeIn}
-                  className="rounded-lg bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
+                  className="rounded-xl bg-white p-6 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl"
                 >
                   <h3 className="mb-3 text-xl font-bold text-primary">{level.name}</h3>
                   <p className="text-gray-600">{level.description}</p>
@@ -517,7 +533,7 @@ export default function AdultsPage() {
                 <motion.div
                   key={index}
                   variants={fadeIn}
-                  className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
+                  className="rounded-xl bg-white p-6 text-center shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl"
                 >
                   {index === 0 && <Users className="mx-auto mb-4 h-12 w-12 text-primary" />}
                   {index === 1 && <BookOpen className="mx-auto mb-4 h-12 w-12 text-primary" />}
@@ -549,7 +565,7 @@ export default function AdultsPage() {
               className="grid gap-8 md:grid-cols-2"
             >
               <motion.div variants={fadeIn}>
-                <div className="rounded-lg bg-white p-6 shadow-lg">
+                <div className="rounded-xl bg-white p-6 shadow-xl">
                   <h3 className="mb-6 text-xl font-bold">Расписание занятий</h3>
                   <div className="space-y-4">
                     {t.schedule.items.map((item, index) => (
@@ -565,7 +581,7 @@ export default function AdultsPage() {
                 </div>
               </motion.div>
               <motion.div variants={fadeIn}>
-                <div className="rounded-lg bg-white p-6 shadow-lg">
+                <div className="rounded-xl bg-white p-6 shadow-xl">
                   <h3 className="mb-6 text-xl font-bold">Форматы обучения</h3>
                   <div className="space-y-4">
                     {t.schedule.formats.map((format, index) => (
@@ -602,7 +618,7 @@ export default function AdultsPage() {
                 <motion.div
                   key={index}
                   variants={fadeIn}
-                  className="flex items-start gap-4 rounded-lg bg-white p-6 shadow-lg"
+                  className="flex items-start gap-4 rounded-xl bg-white p-6 shadow-xl"
                 >
                   <Star className="h-6 w-6 flex-shrink-0 text-primary" />
                   <p className="text-gray-700">{benefit}</p>
@@ -612,41 +628,40 @@ export default function AdultsPage() {
           </div>
         </section>
 
-{/* Pricing */}
-<section className="bg-gray-50 py-16">
-  <div className="container mx-auto px-4">
-    <motion.h2
-      initial="hidden"
-      animate={isLoaded ? "visible" : "hidden"}
-      variants={fadeIn}
-      className="mb-12 text-center text-3xl font-bold"
-    >
-      {t.pricing.title}
-    </motion.h2>
+        {/* Pricing */}
+        <section className="bg-gray-50 py-16">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              initial="hidden"
+              animate={isLoaded ? "visible" : "hidden"}
+              variants={fadeIn}
+              className="mb-12 text-center text-3xl font-bold"
+            >
+              {t.pricing.title}
+            </motion.h2>
 
-    <motion.div
-      initial="hidden"
-      animate={isLoaded ? "visible" : "hidden"}
-      variants={staggerContainer}
-      className="
-        grid gap-8 md:grid-cols-3
-        w-[90%] mx-auto md:ml-[20%] md:mr-auto
-      "
-    >
-      {t.pricing.items.map((item, index) => (
-        <motion.div
-          key={index}
-          variants={fadeIn}
-          className="rounded-lg bg-white p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-[#5C162E]"
-        >
-          <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
-          <p className="text-3xl font-bold text-primary">{item.price}</p>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
-
+            <motion.div
+              initial="hidden"
+              animate={isLoaded ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="
+                grid gap-8 md:grid-cols-3
+                w-[90%] mx-auto md:ml-[20%] md:mr-auto
+              "
+            >
+              {t.pricing.items.map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  className="rounded-xl bg-white p-6 text-center shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl border-2 border-[#5C162E]"
+                >
+                  <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
+                  <p className="text-3xl font-bold text-primary">{item.price}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
 
         {/* CTA Section */}
         <section className="bg-primary py-16 text-white">

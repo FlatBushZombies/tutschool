@@ -297,12 +297,12 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center gap-4">
             <Link href="/" className="group relative flex items-center gap-4">
-              <div className="relative overflow-hidden rounded-2xl transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/20">
+              <div className="relative overflow-hidden rounded-2xl transition-all duration-300">
                 <Image
                   src="/logo.png"
                   alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
-                  width={36}
-                  height={36}
+                  width={96}
+                  height={96}
                   className="object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>

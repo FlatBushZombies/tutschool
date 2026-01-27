@@ -500,10 +500,9 @@ export default function HomePage() {
       <ScrollSpy sectionIds={sectionIds} onChange={(id) => setActiveSection(id)} threshold={0.3} />
 
       <main>
-
-        {/* Hero Section - Taller Slider (More Image Visible) */}
+        {/* Hero Section - Full Coverage with No White Space */}
 <section id="hero" className="relative">
-  <div className="relative w-full h-[100vh] md:h-[110vh] lg:h-[120vh] overflow-hidden bg-black">
+  <div className="relative w-full min-h-[130vh] overflow-hidden">
     {heroImages.map((src, index) => {
       const isActive = index === currentImageIndex;
 
@@ -605,7 +604,7 @@ export default function HomePage() {
 
 
         {/* Welcome Section - Premium */}
-        <section id="welcome" className="py-20 bg-white">
+        <section id="welcome" className="relative z-40 -mt-24 py-20 bg-white rounded-t-[3rem">
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto">
               <h2 className="mb-6 text-3xl sm:text-4xl font-extrabold tracking-tight text-primary">

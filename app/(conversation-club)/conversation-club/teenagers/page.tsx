@@ -7,8 +7,8 @@ import Head from "next/head";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MessageSquare, Globe, BookOpen, Clock, Phone, Mail,
-  ChevronDown, X, Menu, MessageCircle, FileText, Award, 
-  ArrowRight, Check, Landmark,Info
+  ChevronDown, X, Menu, MessageCircle, FileText, Award,
+  ArrowRight, Check, Landmark, Info
 } from "lucide-react";
 import { FadeIn } from "@/components/animations/scroll-animations";
 
@@ -303,7 +303,6 @@ export default function TeenagersPage() {
             price: "3,00 ₽",
             popular: false
           },
-          
         ]
       },
       languageToggle: "Русский",
@@ -317,9 +316,9 @@ export default function TeenagersPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-white text-gray-900">
       <Head>
-                <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(m,e,t,r,i,k,a){
@@ -341,48 +340,56 @@ export default function TeenagersPage() {
           }}
         />
       </Head>
+
       <FadeIn>
 
-
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#5C162E] to-[#7A1F3D]">
+        <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#5C162E] to-[#7A1F3D]">
+          {/* Subtle premium gradient overlay */}
+          <div className="absolute inset-0 opacity-40 bg-gradient-to-br from-white via-transparent to-white" />
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-32 right-1/2 translate-x-1/2 w-[680px] h-[680px] rounded-full bg-white/10 blur-3xl" />
+
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-5xl md:text-6xl font-bold text-white mb-6"
+                transition={{ duration: 0.9 }}
+                className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-tight"
               >
                 {t.hero.title}
               </motion.h1>
+
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl text-white/90 mb-8"
+                transition={{ duration: 0.9, delay: 0.2 }}
+                className="text-xl md:text-2xl text-white/90 mb-10"
               >
                 {t.hero.subtitle}
               </motion.p>
+
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.9, delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
                 <motion.a
-                href="/bookings"
+                  href="/bookings"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#5C162E] px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-medium text-lg"
+                  className="bg-white text-[#5C162E] px-10 py-4 rounded-xl hover:bg-gray-100 transition-colors font-semibold text-lg shadow-xl"
                 >
                   {t.hero.cta}
                 </motion.a>
+
                 <motion.a
-                href="/contact"
+                  href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-colors font-medium text-lg"
+                  className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white/10 transition-colors font-semibold text-lg"
                 >
                   {language === 'ru' ? 'Узнать больше' : 'Learn More'}
                 </motion.a>
@@ -392,7 +399,7 @@ export default function TeenagersPage() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20">
+        <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {t.features.map((feature, index) => (
@@ -401,7 +408,7 @@ export default function TeenagersPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:border-[#5C162E] transition-colors"
+                  className="bg-white/70 backdrop-blur-md p-8 rounded-2xl border border-gray-200 hover:border-[#5C162E] transition-all shadow-lg"
                 >
                   <feature.icon className="w-12 h-12 text-[#5C162E] mb-6" />
                   <h3 className="text-xl font-semibold mb-3 text-[#5C162E]">{feature.title}</h3>
@@ -413,7 +420,7 @@ export default function TeenagersPage() {
         </section>
 
         {/* Activities Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
               {language === 'ru' ? 'Наши занятия' : 'Our Activities'}
@@ -425,7 +432,7 @@ export default function TeenagersPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
                   <div className="relative h-96">
                     <Image
@@ -446,7 +453,7 @@ export default function TeenagersPage() {
         </section>
 
         {/* Levels Section */}
-        <section className="py-20">
+        <section className="py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
               {language === 'ru' ? 'Уровни обучения' : 'Learning Levels'}
@@ -457,10 +464,11 @@ export default function TeenagersPage() {
                   <button
                     key={index}
                     onClick={() => setActiveTab(index)}
-                    className={`px-6 py-3 rounded-lg font-medium transition-all ${activeTab === index
-                      ? 'bg-[#5C162E] text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
+                    className={`px-8 py-3 rounded-xl font-medium transition-all ${
+                      activeTab === index
+                        ? "bg-[#5C162E] text-white shadow-xl"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
                   >
                     {level.name}
                   </button>
@@ -473,7 +481,7 @@ export default function TeenagersPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-center bg-gray-50 p-8 rounded-xl"
+                  className="text-center bg-gray-50 p-10 rounded-2xl shadow-lg"
                 >
                   <p className="text-gray-600 text-lg">
                     {t.levels[activeTab].description}
@@ -485,7 +493,7 @@ export default function TeenagersPage() {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
               {t.pricing.title}
@@ -497,8 +505,9 @@ export default function TeenagersPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow relative ${plan.popular ? 'border-2 border-[#5C162E]' : ''
-                    }`}
+                  className={`bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-shadow relative ${
+                    plan.popular ? "border-2 border-[#5C162E]" : ""
+                  }`}
                 >
                   {plan.popular && (
                     <div className="absolute top-0 right-0 bg-[#5C162E] text-white px-4 py-1 rounded-bl-xl">
@@ -514,20 +523,21 @@ export default function TeenagersPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-[#5C162E] text-white">
+        <section className="py-24 bg-[#5C162E] text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-6">
               {language === 'ru' ? 'Запишитесь на пробный урок' : 'Book a trial lesson'}
             </h2>
             <a href="/bookings"
-              className="bg-white text-[#5C162E] px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-medium text-lg"
+              className="bg-white text-[#5C162E] px-10 py-4 rounded-xl hover:bg-gray-100 transition-colors font-semibold text-lg shadow-xl"
             >
               {t.hero.cta}
             </a>
           </div>
         </section>
       </FadeIn>
-            <noscript>
+
+      <noscript>
         <div>
           <img 
             src="https://mc.yandex.ru/watch/103804746" 

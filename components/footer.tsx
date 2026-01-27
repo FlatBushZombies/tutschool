@@ -94,7 +94,7 @@ export default function Footer() {
               <div className="relative rounded-xl bg-white/10 p-2 backdrop-blur-sm">
                 <Link href="/" aria-label="Home">
                   <Image
-                                    src="/logo.png"
+                                    src="/logo-footer.png"
                                     alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
                                     width={120}
                                     height={120}

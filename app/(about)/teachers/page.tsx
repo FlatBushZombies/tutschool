@@ -284,14 +284,6 @@ export default function Teachers() {
                     <ChevronRight className="inline-block h-4 w-4" />
                     <span>{t.teachers.breadcrumbs.teachers}</span>
                   </div>
-
-                  <Link
-                    href="/bookings"
-                    className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary/90"
-                  >
-                    {t.teachers.cta}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
                 </div>
 
                 <h1 className="text-center text-5xl font-bold leading-tight text-primary">
@@ -302,17 +294,6 @@ export default function Teachers() {
                   {t.teachers.subtitle}
                 </p>
 
-                <div className="mt-2 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                    <p className="text-xs font-semibold text-gray-500">Контакты</p>
-                    <p className="mt-2 text-sm text-gray-700">{t.phone}</p>
-                    <p className="text-sm text-gray-700">{t.email}</p>
-                  </div>
-                  <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                    <p className="text-xs font-semibold text-gray-500">Адрес</p>
-                    <p className="mt-2 text-sm text-gray-700">{t.address}</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

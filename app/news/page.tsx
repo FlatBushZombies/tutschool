@@ -101,69 +101,66 @@ const translations = {
 export default function NewsPage() {
   const t = translations
 
-        const [language, setLanguage] = useState<"ru" | "en">("ru")
-        const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-        const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-        const [isScrolled, setIsScrolled] = useState(false)
-        const [isLoaded, setIsLoaded] = useState(false)
-        const [scrollY, setScrollY] = useState(0)
-      
-        const dropdownRef = useRef<HTMLDivElement>(null)
-      
-        useEffect(() => {
-          // Set loaded state after a small delay to trigger initial animations
-          const timer = setTimeout(() => {
-            setIsLoaded(true)
-          }, 100)
-      
-          // Handle scroll events for scroll-triggered animations
-          const handleScroll = () => {
-            setScrollY(window.scrollY)
-            setIsScrolled(window.scrollY > 100)
-          }
-      
-          window.addEventListener("scroll", handleScroll)
-      
-          return () => {
-            clearTimeout(timer)
-            window.removeEventListener("scroll", handleScroll)
-          }
-        }, [])
-      
-        useEffect(() => {
-          function handleClickOutside(event: MouseEvent) {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-              setActiveDropdown(null)
-            }
-          }
-      
-          document.addEventListener("mousedown", handleClickOutside)
-          return () => {
-            document.removeEventListener("mousedown", handleClickOutside)
-          }
-        }, [])
-      
-      
-        const toggleLanguage = () => {
-          setLanguage(language === "ru" ? "en" : "ru")
-        }
-      
-        const toggleMobileMenu = () => {
-          setMobileMenuOpen(!mobileMenuOpen)
-        }
-      
-        const toggleDropdown = (dropdown: string) => {
-          if (activeDropdown === dropdown) {
-            setActiveDropdown(null)
-          } else {
-            setActiveDropdown(dropdown)
-          }
-        }
-      
-        const fadeIn = {
-          hidden: { opacity: 0, y: 20 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-        }
+  const [language, setLanguage] = useState<"ru" | "en">("ru")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100)
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+      setIsScrolled(window.scrollY > 100)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  const toggleLanguage = () => {
+    setLanguage(language === "ru" ? "en" : "ru")
+  }
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const toggleDropdown = (dropdown: string) => {
+    if (activeDropdown === dropdown) {
+      setActiveDropdown(null)
+    } else {
+      setActiveDropdown(dropdown)
+    }
+  }
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -175,7 +172,7 @@ export default function NewsPage() {
         <meta property="og:description" content={t.heroSubtitle} />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://tutschool.ru/news" />
-                <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(m,e,t,r,i,k,a){
@@ -198,8 +195,8 @@ export default function NewsPage() {
         />
       </Head>
 
-
-      <section className="relative bg-primary py-20 text-white">
+      {/* HERO */}
+      <section className="relative bg-primary pt-28 pb-20 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.h1}</h1>
@@ -209,14 +206,16 @@ export default function NewsPage() {
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
       </section>
 
+      {/* CONTENT */}
       <section className="py-12 bg-white text-black">
-  <div className="container mx-auto px-4">
-    <p className="text-center text-lg mt-2">
-     Скоро появятся новости о школе
-    </p>
-  </div>
-</section>
-   <noscript>
+        <div className="container mx-auto px-4">
+          <p className="text-center text-lg mt-2">
+            Скоро появятся новости о школе
+          </p>
+        </div>
+      </section>
+
+      <noscript>
         <div>
           <img 
             src="https://mc.yandex.ru/watch/103804746" 

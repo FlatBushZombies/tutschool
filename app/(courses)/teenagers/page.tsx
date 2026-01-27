@@ -243,7 +243,7 @@ export default function TeenagersPage() {
     <div className="flex min-h-screen flex-col bg-white">
 
       {/* ===== HEADER (MOVED LOWER, FULLY VISIBLE) ===== */}
-      <header className="relative top-10 z-50">
+      <header className="relative top-10 z-50 pt-8">
         <div className="container mx-auto px-4">
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-4">

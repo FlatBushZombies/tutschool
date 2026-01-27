@@ -440,7 +440,7 @@ export default function AdultsPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative bg-primary pt-[180px] pb-20 text-white">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-6 pt-8">
             <motion.div
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}

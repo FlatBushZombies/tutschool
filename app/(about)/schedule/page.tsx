@@ -393,7 +393,7 @@ export default function SchedulePage() {
 
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 pb-16">
         {/* Hero Section */}
-        <section className="bg-primary py-16 text-white">
+        <section className="bg-primary py-16 pt-[180px] text-white">
           <div className="container mx-auto px-4">
             <motion.div
               initial="hidden"

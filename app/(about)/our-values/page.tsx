@@ -404,7 +404,7 @@ export default function ValuesPage() {
 
       <main className="flex-1 bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-white pt-[110px] pb-16">
+        <section className="bg-white pt-[150px] pb-16">
           <div className="container mx-auto px-6">
             <motion.div
               initial="hidden"

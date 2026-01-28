@@ -112,7 +112,7 @@ export default function ContactPage() {
     ru: {
       schoolName: "Tut School",
       schoolSubtitle: "Курсы иностранных языков",
-      phone: "+7 (983) 662-97-30",
+      phone: "+7 (916) 734-92-46",
       email: "info@tutschool.ru",
       address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",
       workingHours: "Пн-Пт: 9:00-21:00, Сб: 10:00-18:00",
@@ -351,7 +351,7 @@ export default function ContactPage() {
 
     <main>
   {/* HERO */}
-  <section className="bg-gradient-to-r from-burgundy-900 to-burgundy-700 py-24 pt-28 text-white">
+  <section className="bg-gradient-to-r from-burgundy-900 to-burgundy-700 py-24 pt-48 text-white">
   <div className="container mx-auto px-4 text-center">
     <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
     <p className="mx-auto max-w-2xl text-lg opacity-90">{t.hero.subtitle}</p>

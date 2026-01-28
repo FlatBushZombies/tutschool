@@ -138,7 +138,7 @@ export default function Navbar() {
     ru: {
       schoolName: "Tut School",
       schoolSubtitle: "Kурсы иностранных языков",
-      phone: "+7 916 7349246",
+      phone: "+7 (916) 734-92-46",
       email: "info@tut-school.ru",
       address: "Московская область, Химки, микрорайон Новогорск, Заречная улица, 5, корп. 2",
       rating: "4.8 на Яндексе",
@@ -192,7 +192,7 @@ export default function Navbar() {
     en: {
       schoolName: "Tut School",
       schoolSubtitle: "Foreign Language Courses, School of Arts",
-      phone: "+7 916 7349246",
+      phone: "+7 (916) 734-92-46",
       email: "info@tut-school.ru",
       address: "Moscow region, Khimki, Novogorsk district, Zarechnaya street, 5, building 2",
       rating: "4.8 on Yandex",

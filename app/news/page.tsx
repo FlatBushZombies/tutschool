@@ -196,7 +196,7 @@ export default function NewsPage() {
       </Head>
 
       {/* HERO */}
-      <section className="relative bg-primary pt-28 pb-20 text-white">
+      <section className="relative bg-primary pt-48 pb-20 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.h1}</h1>
@@ -207,13 +207,54 @@ export default function NewsPage() {
       </section>
 
       {/* CONTENT */}
-      <section className="py-12 bg-white text-black">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-lg mt-2">
+      {/* CONTENT */}
+<section className="relative bg-white py-24 text-black">
+  <div className="container mx-auto px-4">
+    
+    {/* Section header */}
+    <div className="mb-16 text-center">
+      <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-black/5 px-4 py-2 text-sm">
+        <FileText className="h-4 w-4 text-black/70" />
+        <span className="uppercase tracking-wide text-black/70">
+          {t.nav.news}
+        </span>
+      </div>
+
+      <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+        {t.h1}
+      </h2>
+
+      <p className="mx-auto max-w-2xl text-lg text-black/60">
+        {t.heroSubtitle}
+      </p>
+    </div>
+
+    {/* Premium placeholder card */}
+    <div className="mx-auto max-w-4xl">
+      <div className="relative overflow-hidden rounded-3xl border border-black/5 bg-white p-10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.15)]">
+        
+        {/* Decorative gradient */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-pink-500/5 via-transparent to-transparent" />
+
+        <div className="relative z-10 text-center">
+          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-pink-600/10">
+            <Clock className="h-6 w-6 text-pink-600" />
+          </div>
+
+          <p className="text-lg font-medium text-black/80">
             Скоро появятся новости о школе
           </p>
+
+          <p className="mt-2 text-sm text-black/50">
+            {t.rating}
+          </p>
         </div>
-      </section>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
       <noscript>
         <div>

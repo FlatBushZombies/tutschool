@@ -553,33 +553,73 @@ export default function AdultsPage() {
         </section>
 
                  {/* Pricing Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12 text-[#5C162E]">
-              {t.pricing.title}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {t.pricing.plans.map((plan, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow relative ${plan.popular ? 'border-2 border-[#5C162E]' : ''
-                    }`}
-                >
-                  {plan.popular && (
-                    <div className="absolute top-0 right-0 bg-[#5C162E] text-white px-4 py-1 rounded-bl-xl">
-                      {language === 'ru' ? 'Популярный' : 'Popular'}
-                    </div>
-                  )}
-                  <h3 className="text-xl font-bold mb-4 text-[#5C162E]">{plan.name}</h3>
-                  <p className="text-3xl font-bold text-primary">{plan.price}</p>
-                </motion.div>
-              ))}
+<section className="py-28 bg-[#FAFAFA]">
+  <div className="container mx-auto px-4">
+
+    {/* Section Header */}
+    <div className="text-center max-w-2xl mx-auto mb-16">
+      <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-[#5C162E]/10 text-[#5C162E] font-medium">
+        Pricing
+      </span>
+      <h2 className="text-4xl font-bold tracking-tight text-[#5C162E]">
+        {t.pricing.title}
+      </h2>
+    </div>
+
+    {/* Pricing Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+      {t.pricing.plans.map((plan, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.15 }}
+          className={`
+            relative rounded-3xl p-10 shadow-xl transition-all
+            bg-gradient-to-br from-white to-[#F7F2F4]
+            hover:-translate-y-1 hover:shadow-2xl
+            ${plan.popular ? "ring-2 ring-[#5C162E]" : ""}
+          `}
+        >
+          {/* Popular badge (unchanged logic) */}
+          {plan.popular && (
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1 rounded-full bg-[#5C162E] text-white text-sm font-semibold shadow-md">
+              {language === "ru" ? "Популярный" : "Popular"}
             </div>
+          )}
+
+          {/* Plan Name */}
+          <h3 className="text-2xl font-semibold text-[#5C162E] mb-6 text-center">
+            {plan.name}
+          </h3>
+
+          {/* Price */}
+          <div className="text-center mb-10">
+            <span className="text-5xl font-bold text-[#5C162E]">
+              {plan.price}
+            </span>
           </div>
-        </section>
+
+          {/* CTA (visual enhancement only) */}
+          <Link
+            href="/bookings"
+            className={`
+              block w-full text-center rounded-xl py-4 font-semibold transition-all 
+              ${
+                plan.popular
+                  ? "bg-white text-white hover:opacity-90"
+                  : "bg-[#5C162E] border border-[#5C162E]/20 text-[#5C162E] hover:bg-[#5C162E]/5 text-white"
+              }
+            `}
+          >
+            {t.hero.cta}
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
         {/* CTA Section */}
         <section className="py-20 bg-[#5C162E] text-white">

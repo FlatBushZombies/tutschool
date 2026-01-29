@@ -254,7 +254,7 @@ export default function Aged7to9Page() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col pt-48 bg-primary">
+    <div className="flex min-h-screen flex-col pt-[180px] bg-primary">
       <FadeIn>
 
         {/* Hero Section */}
@@ -277,14 +277,15 @@ export default function Aged7to9Page() {
                 {t.hero.subtitle}
               </p>
               <div className="mt-8 flex justify-center gap-4">
-                <a
-                  href="/bookings"
-                  className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-[#5C162E] font-semibold shadow-lg hover:shadow-xl transition"
-                >
-                  {t.hero.cta}
-                </a>
-                
-              </div>
+  <Link
+    href="/bookings"
+    className="relative z-10 inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-[#5C162E] font-semibold shadow-lg hover:shadow-xl transition"
+  >
+    {t.hero.cta}
+  </Link>
+</div>
+<div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10 pointer-events-none"></div>
+
             </motion.div>
           </div>
           <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#5C162E]/30 to-transparent" />

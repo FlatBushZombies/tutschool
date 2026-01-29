@@ -294,77 +294,23 @@ export default function Aged10to12Page() {
     </div>
   )
 
-  const Header = () => (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-lg" : "bg-white/70 backdrop-blur-md"}`}>
-      <TopBar />
-      <div className="container mx-auto flex items-center justify-between gap-6 px-4 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="rounded-full bg-primary/10 border border-primary p-2">
-            <BookOpen className="h-5 w-5 text-primary" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-bold text-lg text-gray-900">{t.schoolName}</div>
-            <div className="text-xs text-gray-500">{t.schoolSubtitle}</div>
-          </div>
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-700">
-          <Link href="/about" className="hover:text-primary transition-colors">
-            {t.nav.about}
-          </Link>
-          <Link href="/courses" className="hover:text-primary transition-colors">
-            {t.nav.courses}
-          </Link>
-          <Link href="/chinese" className="hover:text-primary transition-colors">
-            {t.nav.chinese}
-          </Link>
-          <Link href="/contacts" className="hover:text-primary transition-colors">
-            {t.nav.contacts}
-          </Link>
-        </nav>
-
-        <div className="hidden lg:flex items-center gap-3">
-          <a href="/bookings" className="rounded-lg bg-primary px-5 py-2 text-white font-semibold shadow-md hover:bg-primary/90 transition-colors">
-            {t.hero.cta}
-          </a>
-        </div>
-
-        <button className="lg:hidden" onClick={toggleMobileMenu}>
-          {mobileMenuOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200">
-          <div className="space-y-1 px-4 pb-4">
-            <Link href="/about" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
-              {t.nav.about}
-            </Link>
-            <Link href="/courses" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
-              {t.nav.courses}
-            </Link>
-            <Link href="/chinese" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
-              {t.nav.chinese}
-            </Link>
-            <Link href="/contacts" className="block py-3 text-gray-700 hover:bg-gray-50 rounded-md">
-              {t.nav.contacts}
-            </Link>
-          </div>
-        </div>
-      )}
-    </header>
-  )
 
   const HeroSection = () => (
-    <section className="relative bg-primary py-24 pt-48 text-white">
+    <section className="relative bg-primary pb-32 pt-60 text-white">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
           <p className="mx-auto max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
-          <a href="/bookings" className="mt-8 inline-block rounded-lg bg-white text-primary px-10 py-3 font-semibold shadow-lg hover:bg-gray-100 transition-colors">
-            {t.hero.cta}
-          </a>
+          <div className="mt-8 flex justify-center gap-4">
+  <Link
+    href="/bookings"
+    className="relative z-10 inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-[#5C162E] font-semibold shadow-lg hover:shadow-xl transition"
+  >
+    {t.hero.cta}
+  </Link>
+</div>
+<div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10 pointer-events-none"></div>
+
         </div>
       </div>
       <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
@@ -477,7 +423,7 @@ export default function Aged10to12Page() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <main className="flex-1 pt-48">
+      <main className="flex-1">
         <HeroSection />
         <BenefitsSection />
         <ActivitiesSection />

@@ -242,82 +242,10 @@ export default function TeenagersPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
 
-      {/* ===== HEADER (MOVED LOWER, FULLY VISIBLE) ===== */}
-      <header className="relative top-10 z-50 pt-14">
-        <div className="container mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="text-[#5C162E] font-bold uppercase tracking-wide">
-                {t.schoolName}
-              </div>
-              <div className="text-gray-500 text-sm hidden md:block">
-                {t.schoolSubtitle}
-              </div>
-            </div>
-
-            <nav className="hidden lg:flex items-center gap-6 text-sm font-bold uppercase tracking-wide text-gray-700">
-              <Link href="/" className="hover:text-[#5C162E] transition">
-                {language === "ru" ? "Главная" : "Home"}
-              </Link>
-              <Link href="/teachers" className="hover:text-[#5C162E] transition">
-                {t.nav.about}
-              </Link>
-              <Link href="/teenagers" className="hover:text-[#5C162E] transition">
-                {t.hero.title}
-              </Link>
-              <Link href="/contacts" className="hover:text-[#5C162E] transition">
-                {t.nav.contacts}
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-3">
-              <button
-                onClick={toggleLanguage}
-                className="hidden md:inline-flex items-center gap-2 border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-50 transition text-sm font-bold uppercase"
-              >
-                <Globe className="w-4 h-4" />
-                {t.languageToggle}
-              </button>
-
-              <button
-                onClick={toggleMobileMenu}
-                className="inline-flex lg:hidden items-center justify-center w-10 h-10 rounded-lg border border-gray-200 hover:bg-gray-50 transition"
-              >
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-
-          {/* MOBILE MENU */}
-          {mobileMenuOpen && (
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 mt-4 p-4">
-              <div className="flex flex-col gap-3">
-                <Link href="/" className="py-2 font-bold uppercase text-sm hover:text-[#5C162E]">
-                  Home
-                </Link>
-                <Link href="/teachers" className="py-2 font-bold uppercase text-sm hover:text-[#5C162E]">
-                  {t.nav.about}
-                </Link>
-                <Link href="/teenagers" className="py-2 font-bold uppercase text-sm hover:text-[#5C162E]">
-                  {t.hero.title}
-                </Link>
-                <Link href="/contacts" className="py-2 font-bold uppercase text-sm hover:text-[#5C162E]">
-                  {t.nav.contacts}
-                </Link>
-                <button
-                  onClick={toggleLanguage}
-                  className="mt-2 py-2 border border-gray-200 rounded-lg font-bold uppercase text-sm"
-                >
-                  {t.languageToggle}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
+  
 
       {/* HERO */}
-      <section className="relative bg-primary py-24 text-white">
+      <section className="relative bg-primary pb-32 pt-60 text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -331,12 +259,16 @@ export default function TeenagersPage() {
             <p className="mx-auto max-w-2xl text-lg text-white/80">
               {t.hero.subtitle}
             </p>
-            <a
-              href="/bookings"
-              className="inline-flex mt-8 items-center gap-3 bg-white text-[#5C162E] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
-            >
-              {t.hero.cta}
-            </a>
+            <div className="mt-8 flex justify-center gap-4">
+  <Link
+    href="/bookings"
+    className="relative z-10 inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-[#5C162E] font-semibold shadow-lg hover:shadow-xl transition"
+  >
+    {t.hero.cta}
+  </Link>
+</div>
+<div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10 pointer-events-none"></div>
+
           </motion.div>
         </div>
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>

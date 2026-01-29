@@ -196,7 +196,7 @@ export default function NewsPage() {
       </Head>
 
       {/* HERO */}
-      <section className="relative bg-primary pt-48 pb-20 text-white">
+      <section className="relative bg-primary pt-52 pb-28 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.h1}</h1>

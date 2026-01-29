@@ -326,7 +326,7 @@ export default function PreschoolersPage() {
       ========================== */}
       <main className="flex-1">
         {/* Hero Section */}
-     <section className="relative bg-primary pt-36 pb-24 text-white">
+     <section className="relative bg-primary pt-60 pb-32 text-white">
   {/* CONTENT LAYER */}
   <div className="relative z-10 container mx-auto px-4">
     <motion.div

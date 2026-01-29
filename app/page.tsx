@@ -29,9 +29,10 @@ import {
   Award,
   FileText,
 } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 
 export default function HomePage() {
-  const [language, setLanguage] = useState<"ru" | "en">("ru")
+  const { language } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -438,10 +439,6 @@ export default function HomePage() {
   }
 
   const t = translations[language]
-
-  const toggleLanguage = () => {
-    setLanguage(language === "ru" ? "en" : "ru")
-  }
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)

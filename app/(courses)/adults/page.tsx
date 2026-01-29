@@ -391,9 +391,9 @@ export default function AdultsPage() {
       {/* Top Bar */}
       <ScrollProgress />
 
-      <main className="flex-1 pt-48">
+      <main className="flex-1 ">
         {/* Hero Section */}
-        <section className="relative bg-primary pt-48 pb-20 text-white">
+        <section className="relative bg-primary pt-60 pb-32 text-white">
           <div className="container mx-auto px-6 pt-8">
             <motion.div
               initial="hidden"
@@ -403,6 +403,16 @@ export default function AdultsPage() {
             >
               <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.title}</h1>
               <p className="mx-auto max-w-2xl text-lg text-white/80">{t.subtitle}</p>
+              <div className="mt-8 flex justify-center gap-4">
+  <Link
+    href="/bookings"
+    className="relative z-10 inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-[#5C162E] font-semibold shadow-lg hover:shadow-xl transition"
+  >
+    {t.hero.cta}
+  </Link>
+</div>
+<div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10 pointer-events-none"></div>
+
             </motion.div>
           </div>
           <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>

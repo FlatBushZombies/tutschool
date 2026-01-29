@@ -196,7 +196,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-red-900 py-20 pt-48 text-white">
+      <section className="relative bg-primary py-20 pt-48 text-white">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">Пробное занятие</h1>
@@ -213,10 +213,7 @@ export default function BookingPage() {
             className="relative block h-12 w-full text-red-900"
             aria-hidden="true"
           >
-            <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,0,0,0,0Z"
-              fill="currentColor"
-            />
+            
           </svg>
         </div>
       </section>
@@ -228,10 +225,10 @@ export default function BookingPage() {
             {/* Booking Information */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 rounded-lg bg-white p-6 shadow-lg">
-                <h2 className="mb-6 text-2xl font-bold text-red-900">Информация о пробном занятии</h2>
+                <h2 className="mb-6 text-2xl font-bold text-primary">Информация о пробном занятии</h2>
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <Calendar className="mr-3 mt-1 h-5 w-5 text-red-900" />
+                    <Calendar className="mr-3 mt-1 h-5 w-5 text-primary" />
                     <div>
                       <h3 className="font-semibold">Доступные дни</h3>
                       <p className="text-gray-600">Понедельник - Суббота</p>
@@ -391,7 +388,7 @@ export default function BookingPage() {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="flex w-full items-center justify-center rounded-md bg-red-900 py-4 px-4 text-lg font-bold text-white transition-colors duration-300 hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-70"
+                          className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-4 text-lg font-bold text-white transition-colors duration-300 hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-70"
                         >
                           {isSubmitting ? (
                             <>
@@ -462,7 +459,7 @@ export default function BookingPage() {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto max-w-4xl px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-red-900">Часто задаваемые вопросы</h2>
+            <h2 className="mb-4 text-3xl font-bold text-primary">Часто задаваемые вопросы</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Найдите ответы на распространенные вопросы о пробных занятиях и наших услугах
             </p>
@@ -491,7 +488,7 @@ export default function BookingPage() {
               },
             ].map((faq, index) => (
               <div key={index} className="rounded-lg bg-white p-6 shadow-md">
-                <h3 className="mb-2 text-lg font-semibold text-red-900">{faq.question}</h3>
+                <h3 className="mb-2 text-lg font-semibold text-primary">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
               </div>
             ))}

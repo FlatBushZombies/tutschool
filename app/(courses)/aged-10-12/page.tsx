@@ -357,7 +357,7 @@ export default function Aged10to12Page() {
   )
 
   const HeroSection = () => (
-    <section className="relative bg-primary py-24 text-white">
+    <section className="relative bg-primary py-24 pt-48 text-white">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
@@ -477,8 +477,7 @@ export default function Aged10to12Page() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-48">
         <HeroSection />
         <BenefitsSection />
         <ActivitiesSection />

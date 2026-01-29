@@ -313,7 +313,7 @@ export default function PreschoolersPage() {
           HEADER (PUSHED DOWN)
       ========================== */}
       <header className="relative z-20">
-        <div className="container mx-auto px-4 pt-32">
+        <div className="container mx-auto px-4 pt-48">
           <div className="rounded-3xl border border-gray-100 bg-white/70 backdrop-blur-md shadow-xl">
             <div className="flex items-center justify-between gap-6 px-6 py-4">
             </div>

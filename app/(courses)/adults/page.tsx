@@ -391,55 +391,9 @@ export default function AdultsPage() {
       {/* Top Bar */}
       <ScrollProgress />
 
-      {/* Premium Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"}`}>
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-5">
-            <Link href="/" className="text-xl font-bold tracking-tight">
-              <span className="text-primary">Tut</span> School
-            </Link>
-
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-              <Link href="/about">{t.nav.about}</Link>
-              <Link href="/courses">{t.nav.courses}</Link>
-              <Link href="/contacts">{t.nav.contacts}</Link>
-            </nav>
-
-            <div className="hidden md:flex items-center gap-4">
-              <button
-                onClick={toggleLanguage}
-                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium hover:bg-gray-50"
-              >
-                {t.languageToggle}
-              </button>
-
-              <button onClick={toggleMobileMenu} className="md:hidden p-2 rounded-lg border border-gray-200">
-                {mobileMenuOpen ? <X /> : <Menu />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-black/40">
-          <div className="absolute top-0 right-0 w-3/4 h-full bg-white p-6">
-            <button onClick={toggleMobileMenu} className="mb-6">
-              <X />
-            </button>
-            <div className="flex flex-col gap-4">
-              <Link href="/about" onClick={toggleMobileMenu}>{t.nav.about}</Link>
-              <Link href="/courses" onClick={toggleMobileMenu}>{t.nav.courses}</Link>
-              <Link href="/contacts" onClick={toggleMobileMenu}>{t.nav.contacts}</Link>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <main className="flex-1">
+      <main className="flex-1 pt-48">
         {/* Hero Section */}
-        <section className="relative bg-primary pt-[180px] pb-20 text-white">
+        <section className="relative bg-primary pt-48 pb-20 text-white">
           <div className="container mx-auto px-6 pt-8">
             <motion.div
               initial="hidden"

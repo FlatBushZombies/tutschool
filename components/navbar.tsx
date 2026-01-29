@@ -17,6 +17,7 @@ import {
   Mail,
   Landmark
 } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 
 // Animated text component for smooth language transitions
 function AnimatedText({ text, className = "" }: { text: string; className?: string }) {
@@ -49,7 +50,7 @@ function AnimatedText({ text, className = "" }: { text: string; className?: stri
  * TopBar Component (Reusable)
  * Renders the same top bar content in two places
  */
-function TopBar({ t }: { t: any }) {
+function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void }) {
   return (
     <div className="bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-100">
       <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-2">
@@ -110,7 +111,7 @@ function TopBar({ t }: { t: any }) {
           </a>
 
           <button
-            onClick={() => {}}
+            onClick={onToggleLanguage}
             className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:bg-gray-50"
           >
             <Globe className="h-3.5 w-3.5 text-primary transition-transform duration-300 group-hover:rotate-12" />
@@ -127,7 +128,7 @@ function TopBar({ t }: { t: any }) {
 }
 
 export default function Navbar() {
-  const [language, setLanguage] = useState<"ru" | "en">("ru")
+  const { language, setLanguage } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -290,7 +291,7 @@ export default function Navbar() {
         }`}
       >
         {/* TopBar */}
-        <TopBar t={t} />
+        <TopBar t={t} onToggleLanguage={toggleLanguage} />
 
         {/* Header content */}
         <div className="container mx-auto flex items-center justify-between px-6 py-3">

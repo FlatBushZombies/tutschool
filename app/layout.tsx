@@ -8,6 +8,7 @@ import YandexMetrika from "@/components/YandexMetrika";
 import { Toaster } from "sonner";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import { LanguageProvider } from "@/components/language-provider";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -164,8 +165,10 @@ export default function RootLayout({
         </>
       </head>
       <body className={inter.className}>
+         <LanguageProvider>
         <Navbar />
         {children}
+        </LanguageProvider>
         <Footer />
         <Toaster />
                 <Suspense fallback={null}>

@@ -309,24 +309,10 @@ export default function PreschoolersPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      {/* ==========================
-          HEADER (PUSHED DOWN)
-      ========================== */}
-      <header className="relative z-20">
-        <div className="container mx-auto px-4 pt-48">
-          <div className="rounded-3xl border border-gray-100 bg-white/70 backdrop-blur-md shadow-xl">
-            <div className="flex items-center justify-between gap-6 px-6 py-4">
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* ==========================
-          MAIN CONTENT
-      ========================== */}
+  
       <main className="flex-1">
         {/* Hero Section */}
-     <section className="relative bg-primary pt-60 pb-32 text-white">
+     <section className="relative bg-primary pt-60 pb-32 text-white z-20">
   {/* CONTENT LAYER */}
   <div className="relative z-10 container mx-auto px-4">
     <motion.div

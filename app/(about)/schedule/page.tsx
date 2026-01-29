@@ -393,7 +393,7 @@ export default function SchedulePage() {
 
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 pb-16">
         {/* Hero Section */}
-        <section className="bg-primary py-16 pt-[180px] text-white">
+        <section className="bg-primary py-16 pt-56 text-white">
           <div className="container mx-auto px-4">
             <motion.div
               initial="hidden"
@@ -776,20 +776,31 @@ export default function SchedulePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-primary py-16 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div initial="hidden" animate={isLoaded ? "visible" : "hidden"} variants={fadeIn}>
-              <h2 className="mb-6 text-3xl font-bold">{t.bookTrial}</h2>
-              <Link
-                href="/bookings"
-                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-medium text-primary transition-colors hover:bg-gray-100"
-              >
-                <Clock className="mr-2 h-5 w-5" />
-                {language === "ru" ? "Записаться" : "Book Now"}
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+<section className="bg-primary py-24 text-white">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
+      variants={fadeIn}
+      className="mx-auto max-w-4xl"
+    >
+      <div className="rounded-2xl bg-primary/90 px-10 py-14 text-center shadow-[0_20px_60px_rgba(0,0,0,0.15)] backdrop-blur-sm">
+        <h2 className="mb-10 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+          {t.bookTrial}
+        </h2>
+
+        <Link
+          href="/bookings"
+          className="inline-flex items-center gap-2 rounded-xl bg-white px-9 py-4 text-base font-medium text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-lg"
+        >
+          <Clock className="h-5 w-5" />
+          {language === "ru" ? "Записаться" : "Book Now"}
+        </Link>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
       </main>
        <noscript>
         <div>

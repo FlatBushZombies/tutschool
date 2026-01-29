@@ -629,39 +629,62 @@ export default function AdultsPage() {
         </section>
 
         {/* Pricing */}
-        <section className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-              variants={fadeIn}
-              className="mb-12 text-center text-3xl font-bold"
-            >
-              {t.pricing.title}
-            </motion.h2>
+        <section className="py-28 bg-[#FAFAFA]">
+  <div className="container mx-auto px-4">
 
-            <motion.div
-              initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="
-                grid gap-8 md:grid-cols-3
-                w-[90%] mx-auto md:ml-[20%] md:mr-auto
-              "
-            >
-              {t.pricing.items.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeIn}
-                  className="rounded-xl bg-white p-6 text-center shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl border-2 border-[#5C162E]"
-                >
-                  <h3 className="mb-4 text-xl font-bold">{item.type}</h3>
-                  <p className="text-3xl font-bold text-primary">{item.price}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+    {/* Section Header */}
+    <motion.div
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
+      variants={fadeIn}
+      className="text-center max-w-2xl mx-auto mb-16"
+    >
+      <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-[#5C162E]/10 text-[#5C162E] font-medium">
+        Pricing
+      </span>
+
+      <h2 className="text-4xl font-bold tracking-tight text-[#5C162E]">
+        {t.pricing.title}
+      </h2>
+    </motion.div>
+
+    {/* Pricing Grid */}
+    <motion.div
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
+      variants={staggerContainer}
+      className="grid gap-10 md:grid-cols-3 max-w-5xl mx-auto"
+    >
+      {t.pricing.items.map((item, index) => (
+        <motion.div
+          key={index}
+          variants={fadeIn}
+          className="
+            relative rounded-3xl p-10 text-center
+            bg-gradient-to-br from-white to-[#F7F2F4]
+            shadow-xl transition-all
+            hover:-translate-y-1 hover:shadow-2xl
+            ring-1 ring-[#5C162E]/20
+          "
+        >
+          {/* Plan Type */}
+          <h3 className="mb-6 text-2xl font-semibold text-[#5C162E]">
+            {item.type}
+          </h3>
+
+          {/* Price */}
+          <div className="mb-2">
+            <span className="text-5xl font-bold text-[#5C162E]">
+              {item.price}
+            </span>
           </div>
-        </section>
+        </motion.div>
+      ))}
+    </motion.div>
+
+  </div>
+</section>
+
 
         {/* CTA Section */}
         <section className="bg-primary py-16 text-white">

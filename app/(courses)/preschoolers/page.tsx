@@ -313,54 +313,9 @@ export default function PreschoolersPage() {
           HEADER (PUSHED DOWN)
       ========================== */}
       <header className="relative z-20">
-        <div className="container mx-auto px-4 pt-6">
+        <div className="container mx-auto px-4 pt-32">
           <div className="rounded-3xl border border-gray-100 bg-white/70 backdrop-blur-md shadow-xl">
             <div className="flex items-center justify-between gap-6 px-6 py-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <span className="text-xl font-bold text-primary">
-                    T
-                  </span>
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-gray-900">
-                    {t.schoolName}
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    {t.schoolSubtitle}
-                  </div>
-                </div>
-              </div>
-
-              <div className="hidden md:flex items-center gap-6">
-                <div className="text-sm text-gray-500">
-                  <div>{t.phone}</div>
-                  <div>{t.email}</div>
-                </div>
-                <button
-                  onClick={toggleLanguage}
-                  className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition"
-                >
-                  {t.languageToggle}
-                </button>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/bookings"
-                  className="hidden md:inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2 text-sm font-semibold text-white shadow-lg hover:bg-primary/90 transition"
-                >
-                  {t.hero.cta}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-
-                <button
-                  onClick={toggleLanguage}
-                  className="md:hidden rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium"
-                >
-                  {t.languageToggle}
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -371,33 +326,37 @@ export default function PreschoolersPage() {
       ========================== */}
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative bg-primary py-24 text-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-              variants={fadeIn}
-              className="text-center"
-            >
-              <h1 className="mb-4 text-5xl font-bold md:text-6xl">
-                {t.hero.title}
-              </h1>
-              <p className="mx-auto max-w-2xl text-lg text-white/85">
-                {t.hero.subtitle}
-              </p>
+     <section className="relative bg-primary pt-36 pb-24 text-white">
+  {/* CONTENT LAYER */}
+  <div className="relative z-10 container mx-auto px-4">
+    <motion.div
+      initial="hidden"
+      animate={isLoaded ? "visible" : "hidden"}
+      variants={fadeIn}
+      className="text-center"
+    >
+      <h1 className="mb-4 text-5xl font-bold md:text-6xl">
+        {t.hero.title}
+      </h1>
 
-              <Link
-                href="/bookings"
-                className="mt-10 inline-flex items-center gap-3 rounded-full bg-white px-10 py-4 text-sm font-semibold text-primary shadow-xl hover:bg-gray-100 transition"
-              >
-                {t.hero.cta}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </div>
+      <p className="mx-auto max-w-2xl text-lg text-white/85">
+        {t.hero.subtitle}
+      </p>
 
-          <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-12"></div>
-        </section>
+      <a
+        href="/bookings"
+        className="mt-10 inline-flex items-center gap-3 rounded-full bg-white px-10 py-4 text-sm font-semibold text-primary shadow-xl transition hover:bg-gray-100"
+      >
+        {t.hero.cta}
+        <ArrowRight className="h-4 w-4" />
+      </a>
+    </motion.div>
+  </div>
+
+  {/* BACKGROUND OVERLAY */}
+  <div className="pointer-events-none absolute inset-0 z-0 bg-[url('/assets/pattern.svg')] opacity-12" />
+</section>
+
 
         {/* Benefits Section */}
         {/* Benefits Section */}

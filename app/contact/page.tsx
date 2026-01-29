@@ -351,8 +351,8 @@ export default function ContactPage() {
 
     <main>
   {/* HERO */}
-  <section className="bg-gradient-to-r from-burgundy-900 to-burgundy-700 py-24 pt-48 text-white">
-  <div className="container mx-auto px-4 text-center">
+  <section className="bg-primary py-24 pt-52 text-white">
+  <div className="container mx-auto  text-center">
     <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
     <p className="mx-auto max-w-2xl text-lg opacity-90">{t.hero.subtitle}</p>
   </div>

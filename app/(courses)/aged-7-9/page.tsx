@@ -254,13 +254,13 @@ export default function Aged7to9Page() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col pt-[96px] bg-gradient-to-b from-white via-white to-gray-50">
+    <div className="flex min-h-screen flex-col pt-48 bg-primary">
       <FadeIn>
 
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-[#5C162E] to-[#3B0F1F] py-24 text-white overflow-hidden">
+        <section className="relative bg-primary py-24 text-white overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_60%)]" />
+            <div className="absolute inset-0 bg-primary" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
@@ -283,12 +283,7 @@ export default function Aged7to9Page() {
                 >
                   {t.hero.cta}
                 </a>
-                <button
-                  onClick={toggleLanguage}
-                  className="inline-flex items-center justify-center rounded-xl border border-white/30 px-6 py-3 text-white font-medium hover:bg-white/10 transition"
-                >
-                  {t.languageToggle}
-                </button>
+                
               </div>
             </motion.div>
           </div>
@@ -399,38 +394,6 @@ export default function Aged7to9Page() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-              variants={fadeIn}
-              className="mb-12 text-center text-3xl font-bold text-[#5C162E]"
-            >
-              {t.pricing.title}
-            </motion.h2>
-
-            <motion.div
-              initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
-            >
-              {t.pricing.items.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeIn}
-                  className="rounded-2xl bg-white p-8 text-center shadow-2xl transition-all hover:-translate-y-1 hover:shadow-3xl border border-gray-100 w-full max-w-sm"
-                >
-                  <h3 className="mb-4 text-xl font-bold text-[#5C162E]">{item.type}</h3>
-                  <p className="text-3xl font-bold text-[#5C162E]">{item.price}</p>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </section>
 

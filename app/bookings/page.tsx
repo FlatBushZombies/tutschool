@@ -196,7 +196,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-red-900 py-20 text-white">
+      <section className="relative bg-red-900 py-20 pt-48 text-white">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">Пробное занятие</h1>

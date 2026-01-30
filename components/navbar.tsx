@@ -296,23 +296,23 @@ export default function Navbar() {
         {/* Header content */}
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
-          <div className="flex items-center gap-4">
-            <Link href="/" className="group relative flex items-center gap-4">
-              <div className="relative overflow-hidden rounded-2xl transition-all duration-300">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Link href="/" className="group relative flex items-center gap-2 sm:gap-4" onClick={() => setMobileMenuOpen(false)}>
+              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl transition-all duration-300">
                 <Image
                   src="/logo.png"
                   alt={language === "ru" ? "Логотип Tut School" : "Tut School logo"}
-                  width={96}
-                  height={96}
-                  className="object-contain transition-transform duration-300 group-hover:scale-105"
+                  width={64}
+                  height={64}
+                  className="sm:w-24 sm:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="hidden sm:block">
-                <h2 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary">
+              <div className="flex flex-col">
+                <h2 className="text-base sm:text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary">
                   {t.schoolName}
                 </h2>
-                <div className="h-5 overflow-hidden">
-                  <AnimatedText text={t.schoolSubtitle} className="text-xs text-gray-500" />
+                <div className="h-5 sm:h-6 overflow-hidden mb-1">
+                  <AnimatedText text={t.schoolSubtitle} className="text-[10px] sm:text-xs text-gray-500" />
                 </div>
               </div>
             </Link>
@@ -437,7 +437,7 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4 lg:hidden">
+          <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
             <button
               className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-gray-200 hover:shadow-md"
               onClick={toggleMobileMenu}
@@ -451,11 +451,11 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`overflow-hidden transition-all duration-500 ease-in-out lg:hidden ${
-            mobileMenuOpen ? "max-h-[calc(100vh-80px)] opacity-100" : "max-h-0 opacity-0"
+          className={`overflow-hidden transition-all duration-500 ease-in-out lg:hidden border-t border-gray-100 ${
+            mobileMenuOpen ? "max-h-[calc(100vh-200px)] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="container mx-auto space-y-2 px-4 pb-6 pt-2">
+          <div className="container mx-auto space-y-3 px-4 py-4">
             {/* About Dropdown */}
             <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
               <button
@@ -463,13 +463,13 @@ export default function Navbar() {
                 className="flex w-full items-center justify-between p-4 text-left font-semibold text-gray-700"
               >
                 <span className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
                     <Info className="h-4 w-4 text-primary" />
                   </div>
-                  <AnimatedText text={t.nav.about} />
+                  <AnimatedText text={t.nav.about} className="text-sm" />
                 </span>
                 <ChevronDown
-                  className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${activeDropdown === "about-mobile" ? "rotate-180" : ""}`}
+                  className={`h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-300 ${activeDropdown === "about-mobile" ? "rotate-180" : ""}`}
                 />
               </button>
               <div
@@ -485,7 +485,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center gap-3 rounded-xl p-3 text-sm text-gray-600 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                      <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-300" />
                       <AnimatedText text={item.title} />
                     </Link>
                   ))}
@@ -500,13 +500,13 @@ export default function Navbar() {
                 className="flex w-full items-center justify-between p-4 text-left font-semibold text-gray-700"
               >
                 <span className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
                     <BookOpen className="h-4 w-4 text-primary" />
                   </div>
-                  <AnimatedText text={t.nav.courses} />
+                  <AnimatedText text={t.nav.courses} className="text-sm" />
                 </span>
                 <ChevronDown
-                  className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${activeDropdown === "courses-mobile" ? "rotate-180" : ""}`}
+                  className={`h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-300 ${activeDropdown === "courses-mobile" ? "rotate-180" : ""}`}
                 />
               </button>
               <div
@@ -522,7 +522,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center gap-3 rounded-xl p-3 text-sm text-gray-600 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                      <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-300" />
                       <AnimatedText text={item.title} />
                     </Link>
                   ))}
@@ -537,13 +537,13 @@ export default function Navbar() {
                 className="flex w-full items-center justify-between p-4 text-left font-semibold text-gray-700"
               >
                 <span className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
                     <MessageCircle className="h-4 w-4 text-primary" />
                   </div>
-                  <AnimatedText text={t.nav.club} />
+                  <AnimatedText text={t.nav.club} className="text-sm" />
                 </span>
                 <ChevronDown
-                  className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${activeDropdown === "club-mobile" ? "rotate-180" : ""}`}
+                  className={`h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-300 ${activeDropdown === "club-mobile" ? "rotate-180" : ""}`}
                 />
               </button>
               <div
@@ -559,7 +559,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center gap-3 rounded-xl p-3 text-sm text-gray-600 transition-all duration-200 hover:bg-primary/5 hover:text-primary"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                      <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-300" />
                       <AnimatedText text={item.title} />
                     </Link>
                   ))}
@@ -573,10 +573,10 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:bg-primary/5 hover:shadow-md"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+              <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
                 <FileText className="h-4 w-4 text-primary" />
               </div>
-              <AnimatedText text={t.nav.news} />
+              <AnimatedText text={t.nav.news} className="text-sm" />
             </Link>
 
             {/* Contacts Link */}
@@ -585,15 +585,15 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:bg-primary/5 hover:shadow-md"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+              <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
                 <Phone className="h-4 w-4 text-primary" />
               </div>
-              <AnimatedText text={t.nav.contacts} />
+              <AnimatedText text={t.nav.contacts} className="text-sm" />
             </Link>
 
             {/* Mobile CTA */}
             <Link
-              href="/contact"
+              href="/bookings"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-all duration-300 hover:shadow-xl"
             >

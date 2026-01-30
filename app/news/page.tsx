@@ -195,18 +195,21 @@ export default function NewsPage() {
         />
       </Head>
 
-      {/* HERO */}
-      <section className="relative bg-primary pt-52 pb-28 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.h1}</h1>
-            <p className="mx-auto max-w-2xl text-lg text-white/80">{t.heroSubtitle}</p>
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
-      </section>
+{/* HERO */}
+<section className="relative bg-primary pt-52 sm:pt-54 md:pt-48 lg:pt-52 pb-20 sm:pb-24 md:pb-28 lg:pb-28 text-white">
+  <div className="container mx-auto px-4">
+    <div className="text-center">
+      <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold">
+        {t.h1}
+      </h1>
+      <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-lg text-white/80">
+        {t.heroSubtitle}
+      </p>
+    </div>
+  </div>
+  <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10 pointer-events-none"></div>
+</section>
 
-      {/* CONTENT */}
       {/* CONTENT */}
 <section className="relative bg-white py-24 text-black">
   <div className="container mx-auto px-4">

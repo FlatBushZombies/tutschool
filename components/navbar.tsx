@@ -74,20 +74,20 @@ function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void 
             </a>
           </div>
 
-          <div className="hidden lg:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+          <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
               <Mail className="h-3 w-3 text-primary" />
             </div>
-            <a href={`mailto:${t.email}`} className="text-xs font-medium text-gray-600 transition-colors hover:text-primary">
+            <a href={`mailto:${t.email}`} className="text-[11px] sm:text-xs font-medium text-gray-600 transition-colors hover:text-primary truncate max-w-[150px] sm:max-w-none">
               {t.email}
             </a>
           </div>
 
-          <div className="hidden xl:flex group items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+          <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
               <Landmark className="h-3 w-3 text-primary" />
             </div>
-            <AnimatedText text={t.address} className="text-xs text-gray-600 font-medium max-w-[300px] truncate" />
+            <AnimatedText text={t.address} className="text-[11px] sm:text-xs text-gray-600 font-medium max-w-[120px] sm:max-w-[200px] md:max-w-[300px] truncate" />
           </div>
         </div>
 

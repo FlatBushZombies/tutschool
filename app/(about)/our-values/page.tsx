@@ -404,17 +404,17 @@ export default function ValuesPage() {
 
       <main className="flex-1 bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-white pt-40 md:pt-[180px] sm:pt-[180px] sm:pb-16 pb-16">
-          <div className="container mx-auto px-6">
+        <section className="bg-white pt-60 sm:pt-52 md:pt-56 lg:pt-60 pb-12 sm:pb-16 md:pb-20">
+          <div className="container mx-auto px-4 sm:px-6">
             <motion.div
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
               variants={fadeIn}
-              className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-10 shadow-xl"
+              className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 sm:p-8 md:p-10 shadow-xl"
             >
               <div className="text-center">
-                <h1 className="mb-4 text-4xl font-bold md:text-5xl text-primary">{t.title}</h1>
-                <p className="mx-auto max-w-2xl text-lg text-gray-600">{t.subtitle}</p>
+                <h1 className="mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-primary">{t.title}</h1>
+                <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-600">{t.subtitle}</p>
               </div>
             </motion.div>
           </div>

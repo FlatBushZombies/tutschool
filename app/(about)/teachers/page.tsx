@@ -272,25 +272,25 @@ export default function Teachers() {
 
       <main className="bg-white">
         {/* Hero */}
-        <section className="bg-white pt-[90px] pb-16">
-          <div className="container mx-auto px-6">
-            <div className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-10 shadow-lg">
-              <div className="flex flex-col gap-6">
+        <section className="bg-white pt-60 sm:pt-52 md:pt-56 lg:pt-60 pb-12 sm:pb-16 md:pb-20">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 sm:p-8 md:p-10 shadow-xl">
+              <div className="flex flex-col gap-4 sm:gap-6">
                 <div className="flex items-center justify-between gap-4">
-                  <div className="text-sm text-gray-500">
+                  <div className="text-xs sm:text-sm text-gray-500">
                     <Link href="/" className="hover:text-primary">
                       {t.teachers.breadcrumbs.home}
                     </Link>
-                    <ChevronRight className="inline-block h-4 w-4" />
+                    <ChevronRight className="inline-block h-3 w-3 sm:h-4 sm:w-4" />
                     <span>{t.teachers.breadcrumbs.teachers}</span>
                   </div>
                 </div>
 
-                <h1 className="text-center text-5xl font-bold leading-tight text-primary">
+                <h1 className="text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-primary">
                   {t.teachers.title}
                 </h1>
 
-                <p className="text-center text-lg text-gray-600">
+                <p className="text-center text-base sm:text-lg text-gray-600">
                   {t.teachers.subtitle}
                 </p>
 

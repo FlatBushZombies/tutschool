@@ -393,16 +393,18 @@ export default function SchedulePage() {
 
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 pb-16">
         {/* Hero Section */}
-        <section className="bg-primary py-16 pt-56 text-white">
-          <div className="container mx-auto px-4">
+        <section className="bg-white pt-60 sm:pt-52 md:pt-56 lg:pt-60 pb-12 sm:pb-16 md:pb-20">
+          <div className="container mx-auto px-4 sm:px-6">
             <motion.div
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
               variants={fadeIn}
-              className="text-center"
+              className="mx-auto max-w-4xl rounded-[2rem] border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 sm:p-8 md:p-10 shadow-xl"
             >
-              <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.title}</h1>
-              <p className="mx-auto max-w-2xl text-lg text-white/80">{t.subtitle}</p>
+              <div className="text-center">
+                <h1 className="mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-primary">{t.title}</h1>
+                <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-600">{t.subtitle}</p>
+              </div>
             </motion.div>
           </div>
         </section>

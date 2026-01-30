@@ -53,22 +53,22 @@ function AnimatedText({ text, className = "" }: { text: string; className?: stri
 function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void }) {
   return (
     <div className="bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-100">
-      <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-2">
-        <div className="flex flex-wrap items-center gap-6">
+      <div className="container mx-auto flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-2.5">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6">
           <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
               <Clock className="h-3 w-3 text-primary" />
             </div>
-            <AnimatedText text={t.workingHours} className="text-xs text-gray-600 font-medium" />
+            <AnimatedText text={t.workingHours} className="text-[11px] sm:text-xs text-gray-600 font-medium whitespace-nowrap" />
           </div>
 
           <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
               <Phone className="h-3 w-3 text-primary" />
             </div>
             <a
               href={`tel:${t.phone.replace(/\s+/g, "")}`}
-              className="text-xs font-medium text-gray-600 transition-colors hover:text-primary"
+              className="text-[11px] sm:text-xs font-medium text-gray-600 transition-colors hover:text-primary whitespace-nowrap"
             >
               {t.phone}
             </a>
@@ -91,10 +91,11 @@ function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void 
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-shrink-0">
           <a
             href="https://wa.me/+79167349246"
-            className="group flex h-8 w-8 items-center justify-center rounded-full bg-green-50 text-green-600 transition-all duration-300 hover:bg-green-100 hover:scale-110 hover:shadow-md"
+            className="group flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-50 text-green-600 transition-all duration-300 hover:bg-green-100 hover:scale-110 hover:shadow-md"
+            aria-label="WhatsApp"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110">
               <path d="M20.472 3.5C18.188 1.24 15.073 0 11.786 0 5.354 0 .13 5.214.13 11.636c0 2.05.546 4.05 1.585 5.812L.13 24l6.726-1.763c1.698.925 3.607 1.41 5.55 1.41h.005c6.43 0 11.65-5.215 11.65-11.637 0-3.109-1.21-6.026-3.413-8.225l-.175-.285zM11.786 21.273h-.004c-1.743 0-3.45-.468-4.942-1.35l-.355-.21-3.676.964.985-3.595-.232-.368c-.975-1.55-1.49-3.335-1.49-5.17 0-5.356 4.364-9.713 9.728-9.713 2.6 0 5.034 1.012 6.868 2.85 1.832 1.837 2.842 4.276 2.84 6.873-.004 5.356-4.367 9.719-9.722 9.719zm5.333-7.278c-.294-.147-1.734-.856-2.002-.951-.268-.097-.463-.146-.658.146-.195.293-.757.951-.928 1.147-.17.195-.342.22-.635.073-.294-.147-1.24-.456-2.363-1.456-.873-.778-1.463-1.738-1.634-2.032-.171-.293-.018-.451.128-.597.132-.132.294-.342.44-.513.148-.17.197-.293.296-.488.098-.195.05-.366-.025-.513-.073-.147-.657-1.583-.9-2.168-.244-.585-.487-.487-.658-.487-.17 0-.367-.025-.562-.025-.195 0-.513.073-.781.366-.269.293-1.025.999-1.025 2.435 0 1.436 1.05 2.824 1.196 3.02.146.195 2.057 3.142 4.988 4.407.697.268 1.24.428 1.664.55.7.222 1.337.19 1.839.115.56-.085 1.734-.71 1.977-1.395.244-.684.244-1.27.17-1.393-.073-.122-.268-.196-.562-.342z" />
@@ -103,7 +104,8 @@ function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void 
 
           <a
             href="https://t.me/TUTschoolNovogorsk"
-            className="group flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition-all duration-300 hover:bg-blue-100 hover:scale-110 hover:shadow-md"
+            className="group flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-500 transition-all duration-300 hover:bg-blue-100 hover:scale-110 hover:shadow-md"
+            aria-label="Telegram"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="transition-transform group-hover:scale-110">
               <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.51.26l.213-3.05 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
@@ -112,9 +114,9 @@ function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void 
 
           <button
             onClick={onToggleLanguage}
-            className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:bg-gray-50"
+            className="group relative flex items-center gap-1.5 sm:gap-2 overflow-hidden rounded-full border border-gray-200 bg-white px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md hover:bg-gray-50 whitespace-nowrap"
           >
-            <Globe className="h-3.5 w-3.5 text-primary transition-transform duration-300 group-hover:rotate-12" />
+            <Globe className="h-3.5 w-3.5 flex-shrink-0 text-primary transition-transform duration-300 group-hover:rotate-12" />
             <span className="relative overflow-hidden">
               <span className="inline-block transition-all duration-300">
                 {t.languageToggle}

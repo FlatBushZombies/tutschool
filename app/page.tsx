@@ -567,19 +567,20 @@ export default function HomePage() {
 
     {/* Navigation Arrows */}
     <button
-      onClick={goToPrevSlide}
-      className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-md p-3 text-white transition-all hover:bg-white/30 hover:scale-110 border border-white/30 shadow-lg"
-      aria-label="Previous slide"
-    >
-      <ChevronLeft className="h-6 w-6" />
-    </button>
-    <button
-      onClick={goToNextSlide}
-      className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-md p-3 text-white transition-all hover:bg-white/30 hover:scale-110 border border-white/30 shadow-lg"
-      aria-label="Next slide"
-    >
-      <ChevronRight className="h-6 w-6" />
-    </button>
+  onClick={goToPrevSlide}
+  className="hidden md:flex absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-md p-3 text-white transition-all hover:bg-white/30 hover:scale-110 border border-white/30 shadow-lg"
+  aria-label="Previous slide"
+>
+  <ChevronLeft className="h-6 w-6" />
+</button>
+<button
+  onClick={goToNextSlide}
+  className="hidden md:flex absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-md p-3 text-white transition-all hover:bg-white/30 hover:scale-110 border border-white/30 shadow-lg"
+  aria-label="Next slide"
+>
+  <ChevronRight className="h-6 w-6" />
+</button>
+
 
     {/* Navigation Dots */}
     <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center gap-3">

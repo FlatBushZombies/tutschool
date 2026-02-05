@@ -328,7 +328,7 @@ export default function HomePage() {
         contacts: "CONTACTS",
       },
       hero: {
-        title: "Language school of English and Chinese",
+        title: "Language school of English",
         subtitle: "Lessons in small groups with qualified teachers in Khimki Novogorsk Kurkino",
         cta: "Book a trial lesson",
       },
@@ -547,7 +547,7 @@ export default function HomePage() {
           Языковая школа
         </h1>
         <h2 className="mb-2 text-3xl md:text-3xl">
-          Английский и китайский
+          Английский 
         </h2>
         <h5 className="mb-2 text-lg md:text-lg text-white/90">
           Химки Новогорск Куркино

@@ -178,7 +178,6 @@ export default function Teachers() {
       items: [
         "Сертификаты CELTA и DELTA от Кембриджского университета",
         "Сертификаты TKT (Teaching Knowledge Test)",
-        "Сертификаты HSK и HSKK для преподавателей китайского языка",
         "Сертификаты IELTS Examiner и TOEFL Instructor",
         "Регулярное участие в методических семинарах и конференциях",
       ],

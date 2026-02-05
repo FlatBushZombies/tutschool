@@ -351,7 +351,7 @@ export default function ContactPage() {
 
     <main>
   {/* HERO */}
-  <section className="bg-primary pb-28 pt-52  text-white">
+  <section className="bg-primary pb-28 pt-56 sm:pt-52 text-white">
   <div className="container mx-auto  text-center">
     <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t.hero.title}</h1>
     <p className="mx-auto max-w-2xl text-lg opacity-90">{t.hero.subtitle}</p>

@@ -344,7 +344,7 @@ export default function TeenagersPage() {
       <FadeIn>
 
         {/* Hero Section */}
-        <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-primary pt-32">
+        <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-primary pt-56 sm:pt-32">
           {/* Subtle premium gradient overlay */}
           
 

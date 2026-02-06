@@ -82,13 +82,23 @@ function TopBar({ t, onToggleLanguage }: { t: any; onToggleLanguage: () => void 
               {t.email}
             </a>
           </div>
+         <Link
+  href="https://yandex.ru/showcaptcha?cc=1&form-fb-hint=2.25&mt=4A883AD4FA8BCA4AC96A52684A9D90B9C07EEA7FE8F2DBF4BC4C3ED01DC34442B88DDF9E41DADB7F5EC47B973689CB00CBE48E69F83C0350A87615BEC58944E3EE44327C7A696F18ADD01EB067FF40116A1F617593F176D450A5C5B51F29455FECCD3845B9729C59B074E28AF63C923C8E5285D3D71D50B3BA7D164E869C81FFC2E071D9D07F7AAE420DEA8967E4D781288C5B71672A9B149DAD01E8659EC6C900C2150BE49B3260E6E3A9307D34C18E4D6AE34A59EFAB0F0D662669C3F4975986F8AB2CA0B0694E296AAECFD2070E31DD96CA337FCCBAEEE693E982531C15B9E68024086CEB952E72DBAAFC83AD801579AB975E6A10AB&retpath=aHR0cHM6Ly95YW5kZXgucnUvbWFwcz90ZXh0PSVEMCU5QyVEMCVCRSVEMSU4MSVEMCVCQSVEMCVCRSVEMCVCMiVEMSU4MSVEMCVCQSVEMCVCMCVEMSU4RiUyMCVEMCVCRSVEMCVCMSVEMCVCQiVEMCVCMCVEMSU4MSVEMSU4MiVEMSU4QyUyQyUyMCVEMCVBNSVEMCVCOCVEMCVCQyVEMCVCQSVEMCVCOCUyQyUyMCVEMCVCQyVEMCVCOCVEMCVCQSVEMSU4MCVEMCVCRSVEMSU4MCVEMCVCMCVEMCVCOSVEMCVCRSVEMCVCRCUyMCVEMCU5RCVEMCVCRSVEMCVCMiVEMCVCRSVEMCVCMyVEMCVCRSVEMSU4MCVEMSU4MSVEMCVCQSUyQyUyMCVEMCU5NyVEMCVCMCVEMSU4MCVEMCVCNSVEMSU4NyVEMCVCRCVEMCVCMCVEMSU4RiUyMCVEMSU4MyVEMCVCQiVEMCVCOCVEMSU4NiVEMCVCMCUyQyUyMDUlMkMlMjAlRDAlQkElRDAlQkUlRDElODAlRDAlQkYuJTIwMg%2C%2C_abf7b4bc79eb3bb3e54b3af4e76c914d&t=2%252F1770374645%252F383cdc1a31eb3750d4086d3371ed777d&u=8127366858901722887&s=b72d2c117ffd1c8684a4654b89dcb4fd"
+  target="_blank"
+  rel="noopener noreferrer"
+  
+>
+  <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
+    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
+      <Landmark className="h-3 w-3 text-primary" />
+    </div>
+    <AnimatedText
+      text={t.address}
+      className="text-[11px] sm:text-xs text-gray-600 font-medium max-w-[120px] sm:max-w-[200px] md:max-w-[300px] truncate"
+    />
+  </div>
+</Link>
 
-          <div className="group flex items-center gap-2 transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
-              <Landmark className="h-3 w-3 text-primary" />
-            </div>
-            <AnimatedText text={t.address} className="text-[11px] sm:text-xs text-gray-600 font-medium max-w-[120px] sm:max-w-[200px] md:max-w-[300px] truncate" />
-          </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-shrink-0">
